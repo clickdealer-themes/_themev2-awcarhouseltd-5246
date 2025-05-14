@@ -1,0 +1,10 @@
+name: website:deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    uses: clickdealer-themes/github-actions/.github/workflows/website-deploy.yaml@main
+    secrets: inherit

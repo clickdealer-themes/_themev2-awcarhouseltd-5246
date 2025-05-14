@@ -1,0 +1,96 @@
+<div data-advanced-search="main" class="o-search o-search--results">
+	
+	<em class="search-block__title">Refine Search</em>
+
+	<a id="mobile-close">Close <i class="far fa-times"></i></a>
+	
+	<form method="get" action="/search_page.php">
+
+		<input type="hidden" id="search-instance" value="{{ instance }}">
+		<input type='hidden' value='0' name='budgetswitch'>
+		<input type="hidden" value="{{ vehicle_type }}" name="vehicle_type">
+		{% if sort %}<input type="hidden" name="sort" value="{{ sort }}">{% endif %}
+
+
+		<fieldset class="fieldset fieldset--search">
+			<div class="fieldset__wrapper">
+
+				{% for key, field in fields if field.position == "main"%}
+				<div class="form-group form-group--{{ key }}">
+					<select name="{{ key }}" id="{{ key }}" data-search-field="main" data-search-filters="{{ field.filters|keys|join(",") }}">
+						<option value="{% if values[key] != "" %}{{ values[key] }}{% endif %}">{{ field.display }}</option>
+					</select>
+				</div>
+				{% endfor %}
+
+			</div>
+		</fieldset>
+
+
+		<fieldset class="fieldset fieldset--price">
+			<div class="fieldset__wrapper">
+
+				{% if "budgetmin" in fields|keys %}
+				<div class="budget-toggle">
+
+					{% if settings['display_budget_toggle'] == '1' %}
+					<div class="budget-toggle__wrapper">
+
+						<div class="price">Price</div>
+						<div class="form-group form-group--budgetswitch">
+							<input type="checkbox" class="a-toggle" name="budgetswitch" id="budgetswitch" data-search-field value="1"{% if budget_toggled %} checked {% endif %}>
+							<label for="budgetswitch" data-checked="Monthly Price" data-unchecked="Total Price"></label>
+						</div>
+						<div class="finance">Finance</div>
+					</div>
+
+					{% else %}
+						<input type="hidden" name="budgetswitch" data-search-field value="{% if settings.default_budget_type %}1{% endif %}">
+					{% endif %}
+					
+				</div>
+				{% endif %}
+
+				{% for key, field in fields if field.position == "section1" %}
+					<div class="form-group form-group--{{ key }}">
+						<select name="{{ key }}" id="{{ key }}" data-search-field="aside" data-search-filters="{{ field.filters|keys|join(",") }}">
+							<option value="{% if values[key] != "" %}{{ values[key] }}{% endif %}">{{ field.display }}</option>
+						</select>
+					</div>
+				{% endfor %}
+			
+			</div>
+		</fieldset>
+
+
+		<fieldset class="fieldset fieldset--button">
+			<div class="fieldset__wrapper">
+
+				{% if "budgetmin" in fields|keys %}
+				<!-- Button Group -->
+				<div class="button-group button-group--search">
+					{% if settings.resetButton == "0" %}
+					<button type="button" title="Search our stock" class="a-btn reset-button" data-search-reset>Reset</button>
+					{% endif %}
+					<button type="submit" title="Search our stock" class="a-btn search-button">Search <span data-search-total></span> vehicles</button>
+				</div>
+				<!-- // Button Group -->
+				{% endif %}
+
+				{% if "budgetmin" not in fields|keys %}
+				<!-- Button Group -->
+				<div class="button-group button-group--search">
+					{% if settings.resetButton == "0" %}
+					<button type="button" title="Search our stock" class="a-btn reset-button" data-search-reset>Reset</button>
+					{% endif %}
+					<button type="submit" title="Search our stock" class="a-btn search-button">Search</button>
+				</div>
+				<!-- // Button Group -->
+				{% endif %}
+
+			</div>
+		</fieldset>
+
+
+	</form>
+</div>

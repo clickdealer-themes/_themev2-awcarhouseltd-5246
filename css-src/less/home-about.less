@@ -1,0 +1,308 @@
+.row-block.row-block--home-about {
+
+  .wrapper {
+    @media @mobile {
+      padding: 0 20px !important;
+      overflow: visible;
+    }
+  }
+
+  .container {
+    @media @mobile {
+      overflow: visible;
+    }
+  }
+}
+
+.about-block {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -60px;
+  margin-bottom: -40px;
+
+  &__text {
+    flex: 3 3 420px; // 🤙
+    margin-right: 60px;
+    margin-bottom: 40px;
+  }
+
+  &__sidebar {
+    position: relative;
+    flex: 1 1 170px;
+    min-width: 360px;
+    max-width: 500px;
+    margin-right: 60px;
+    margin-bottom: 40px;
+    overflow: hidden;
+
+    @media @tablet {
+      min-width: 240px;
+    }
+
+    @media @mobile {
+      max-width: 100%;
+      overflow: visible;
+    }
+
+    // Adds shadow border
+    &:before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      right: 100%;
+      height: calc(~'100% - 40px');
+      width: 100px;
+      box-shadow: 0 10px 20px fade(black,40%);
+
+      @media @mobile {
+        content: none;
+      }
+    }
+  }
+}
+
+
+// Typography styles should rule the majority of the about-text content but any overrides should be here.
+.about-text {
+
+  p:first-of-type {
+    font-size: 110%;
+  }
+}
+
+
+// Sidebar styles
+.about-sidebar {
+
+  &__lead-image {
+    height: 260px;
+    width: 100%;
+
+    &.visible {
+      background: @primary-colour url('@{dealer-img}/theme/about-us{CACHE_BUSTER}.jpg') center center no-repeat !important;
+      background-size: cover !important;
+    }
+
+    @media @lap {
+      height: 220px;
+    }
+
+    @media @tablet {
+      height: 160px;
+    }
+
+    @media @mobile {
+      margin-right: -20px;
+      margin-left: -20px;
+      width: calc(~'100% + 40px');
+      max-width: calc(~'100% + 40px');
+    }
+  }
+
+  &__content {
+    margin: 20px;
+    overflow: hidden;
+
+    @media @mobile {
+      margin: 20px 0;
+    }
+
+    h3 {
+      margin-bottom: 20px;
+      font-size: 20px;
+      text-align: center;
+
+      @media @lap {
+        font-size: 18px;
+      }
+    }
+
+    h4 {
+      margin-bottom: 12px;
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+}
+
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -1px;
+
+  @media @tablet {
+    flex-direction: column;
+  }
+
+  @media @mobile {
+    flex-direction: row;
+  }
+
+  &__item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 120px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-right: 1px solid #424242;
+
+    @media @tablet {
+      flex: 0 0 auto;
+      padding: 0 15px 15px;
+      margin-bottom: 15px;
+      border-right: 0;
+      border-bottom: 1px solid #424242;
+    }
+
+    @media @mobile {
+      flex: 1 1 160px;
+      padding: 0 10px 10px;
+      margin-bottom: 10px;
+      border-right: 1px solid #424242;
+    }
+
+    &--email {
+      .contact-info__icon img {
+        max-height: 38px; // Height adjusted so the icon is in proportion
+      }
+    }
+
+    &--full {
+      flex: 1 1 500px;
+      border-top: 1px solid #424242;
+
+      @media @tablet {
+        flex: 0 0 auto;
+        border-top: 0;
+      }
+
+      .contact-info__icon {
+        margin-bottom: 0;
+        margin-right: 10px;
+
+        @media @tablet {
+          margin-bottom: 10px;
+          margin-right: 0;
+        }
+
+        @media @mobile {
+          margin-right: 10px;
+        }
+      }
+
+      &.contact-info__item--email .contact-info__icon img {
+        max-height: 24px; // Height adjusted so the icon is in proportion
+      }
+    }
+  }
+
+  &__icon {
+    margin-bottom: 10px;
+    animation: none;
+
+    &:hover {
+      animation: pulse 1s forwards;
+    }
+
+    @media @mobile {
+      margin: 10px;
+    }
+
+    img {
+      max-height: 44px;
+
+      @media @tablet {
+        max-height: 32px;
+      }
+    }
+  }
+
+  a {
+    color: @text-colour;
+
+    @media @tablet {
+      font-size: 14px;
+    }
+
+    span {
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    &:hover {
+      color: @text-colour;
+
+      span {
+        color: @accent-colour;
+      }
+    }
+  }
+}
+
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-right: -8px;
+
+  &__item {
+    flex: 0 0 32px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      width: 32px;
+      background: @accent-colour;
+      color: white;
+      font-size: 20px;
+      text-align: center;
+      border-radius: 999px;
+      animation: none;
+
+      &:hover {
+        animation: pulse .5s forwards;
+      }
+    }
+
+    // Brand colours
+    &--facebook a {
+      color: #1877F2;
+      background: white;
+      font-size: 34px;
+    }
+
+    &--instagram a {
+      background: #E1306C;
+    }
+
+    &--twitter a {
+      background: #1DA1F2;
+      font-size: 18px;
+    }
+  }
+}
+
+
+// Animations
+
+@keyframes pulse {
+  0% {
+    transform: scale(1.0);
+  }
+
+  70% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1.0);
+  }
+}

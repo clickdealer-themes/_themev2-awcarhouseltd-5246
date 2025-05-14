@@ -1,0 +1,88 @@
+{% for key, page in pages %}
+
+    {% set isDropdown = false %}
+    {% if page.brands or page.subpages %}
+        {% set isDropdown = true %}
+    {% endif %}
+
+    <li class="megamenu__listitem" id="listitem__{{ page.code|lower }}--parent" itemprop="name" {% if isDropdown %}data-menu-dropdown="{{ key }}"{% endif %}>
+        <a href="{{ page.link }}" itemprop="url" class="megamenu__listitem__link{% if page.current %} megamenu__listitem__link--current{% endif %}{% if page.subpages or page.brands %} megamenu__listitem__link--parent{% endif %}" title="{{ page.label }}" role="menuitem" {% if page.target %} target="{{ page.target }}"{% endif %} {% if isDropdown %}data-menu-close{% endif %}>
+            {{ page.label }}
+            <i class="ci ci-angle-down-l"></i>
+        </a>
+        <!-- Display normal dropdowns -->
+        {% if page.subpages and not page.brands %}
+            <div class="megasubmenu" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
+                <div class="container">
+                    <ul class="megasubmenu__list">
+                        {% for sub in page['subpages'] %}
+                            <li class="megasubmenu__listitem" id="listitem__{{ sub.code }}">
+                                <a href="{{ sub.link }}" class="megasubmenu__listitem__link{% if sub.current %} megasubmenu__listitem__link--current{% endif %}" title="{{ sub.label }}" role="menuitem"{% if sub.target %} target="{{ sub.target }}"{% endif %}>
+                                    {{ sub.label }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+        {% if page.brands %}
+        <div class="megasubmenu" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
+            <div class="l-megamenu">
+                <div class="wrapper">
+                    <div class="container">
+                        <div class="o-megamenu">
+                            <div class="column-1">
+                                <!-- Megamenu Group -->
+                                <div class="megamenu-group megamenu-group--{{ page.code|lower }}">
+                                    <div class="megamenu-group__title">{{ page.label }}</div>
+                                    <ul class="megamenu-group__list">
+                                        {% for sub in page.subpages %}
+                                            <li{% if sub.current %} class="current"{% endif %}><a href="{{ sub.link }}" title="{{ sub.label }}"{% if 'search_page' in sub.link %} rel="nofollow"{% endif %}{% if sub.target %} target="{{ sub.target }}"{% endif %}>{{ sub.label }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <!-- // Megamenu Group -->
+                            </div>
+
+                            <div class="column-2">
+                            
+                                <!-- Megamenu Group -->
+                                <div class="megamenu-group megamenu-group--finance">
+                                    <div class="megamenu-group__title">Finance</div>
+                                    <ul class="megamenu-group__list">
+                                        <li><a href="/search_page.php?budget=150" title="" rel="nofollow">Upto &pound;150 p/m</a></li>
+                                        <li><a href="/search_page.php?budget=250" title="" rel="nofollow">Upto &pound;250 p/m</a></li>
+                                        <li><a href="/search_page.php?budget=99999" title="" rel="nofollow">&pound;250 p/m & Over</a></li>
+                                    </ul>
+                                </div>
+                                <!-- // Megamenu Group -->
+                            </div>
+
+                            {% if page.brands %}
+                            <div class="column-3">
+                                <!-- Megamenu Group -->
+                                <div class="megamenu-group megamenu-group--brands">
+                                    <div class="megamenu-group__title">Brands</div>
+                                    <ul class="megamenu-group__list">
+                                        {% for brand in page.brands %}
+                                            <li{% if brand.current %} class="current"{% endif %}>
+                                                <a href="{{ brand.link }}" title="Used {{ brand.label }}">
+                                                    <span>{{ brand.label }}{% if brand.count %} ({{ brand.count }}) {% endif %}</span>
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <!-- // Megamenu Group -->
+                            </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </li>
+{% endfor %}

@@ -1,0 +1,1 @@
+<li class="pagenavi__next"><a {RESULTS_PAGE_NO_FOLLOW_LINK} href="{RESULTS_PAGINATION_NEXT_SLUG}" class="next" title="Last Page of Results">Last <span class="tablet-hidden">Page </span><i class="far fa-chevron-right"></i></a></li>

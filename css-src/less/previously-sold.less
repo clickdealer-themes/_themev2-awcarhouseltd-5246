@@ -1,0 +1,36 @@
+// previously sold
+
+.list-similarcars {
+  .flex-display(@display: flex) !important;
+  .flex-wrap(@wrap: wrap);
+  margin-right: -20px;
+  margin-bottom: -20px;
+
+  li {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    .flex-grow(@grow: 0);
+    .flex-shrink(@shrink: 0);
+    .flex-basis(@width: calc(~'100% / 4 - 20px'));
+
+    @media @tablet {
+      .flex-basis(@width: calc(~'100% / 2 - 20px'));
+    }
+    @media @mobile {
+      .flex-basis(@width: calc(~'100% - 20px'));
+    }
+  }
+}
+
+// Previously Sold
+.results-gallery {
+  .list-similarcars {
+    a {
+      color: @primary-colour;
+
+      &:hover {
+        color: @accent-colour;
+      }
+    }
+  }
+}

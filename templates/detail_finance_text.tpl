@@ -1,0 +1,1 @@
+<span id="nop_vehicle_id_{v2_FP_RESULTS_ID}">{CURRENCY_SYMBOL}{DETAIL_REGULAR_PAYMENT}</span>

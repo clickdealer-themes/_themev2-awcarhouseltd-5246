@@ -1,0 +1,228 @@
+fieldset {
+  padding: 0;
+  border: none;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 36px;
+  float: none;
+  padding: 0 20px 0 5px;
+  margin: 0;
+  color: @text-colour;
+  background: white url('@{dealer-img}/theme/select-icon{CACHE_BUSTER}.svg') no-repeat;
+  background-size: 12px 12px;
+  background-position: right 5px center;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: 0.2s all ease-in-out;
+
+  &:focus,
+  &:hover {
+    background: white url('@{dealer-img}/theme/select-icon-hover{CACHE_BUSTER}.svg') no-repeat;
+    background-size: 12px 12px;
+    background-position: right 5px center;
+    outline: none;
+  }
+
+  @media @mobile {
+    font-size: 16px;
+  }
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+input,
+input[type=text],
+input[type=number],
+input[type=email],
+input[type=tel] {
+  width: 100%;
+  max-width: 100%;
+  height: 36px;
+  float: none;
+  padding: 0 5px;
+  margin: 0;
+  color: @text-colour;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  outline: none;
+
+  @media @mobile {
+    font-size: 16px;
+  }
+
+  // override structure
+  .sidebar & {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+textarea {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+
+  @media @mobile {
+    font-size: 16px;
+  }
+
+  // override structure
+  .sidebar & {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+
+// Buttons
+
+.btn {
+  display: inline-block;
+  margin: 0;
+  padding: 8px 15px;
+  background: @button-bg-colour;
+  color: @button-text-colour !important; // Importanted to override any visited links
+  font-family: @alpha-font;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: none;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 0;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: 0.2s all linear;
+
+  &:hover {
+    background: @button-bg-hover-colour;
+    color: @button-text-hover-colour !important; // Importanted to override any visited links
+    border: 0;
+  }
+}
+
+.btn.btn--finance{
+  background: limegreen;
+
+  &:hover{
+    background: darken(limegreen,20%);
+  }
+}
+
+.btn--bordered {
+  border: 1px solid @text-colour;
+  background: transparent !important;
+  color: @text-colour !important;
+  box-shadow: none;
+
+  &:hover,
+  &:focus {
+    border: 1px solid @accent-colour;
+    background: @accent-colour !important;
+    color: white !important;
+  }
+}
+
+
+.btn--engage {
+  .btn;
+  background: @reserve-bg-colour !important;
+  color: white !important;
+
+  &:hover {
+    background: @primary-colour !important;
+    color: white !important;
+  }
+}
+
+
+#slider-search-panel input.button,
+#search-advanced button.button,
+form#webzationForm input#webzationButton,
+#fin-table-apply a.button,
+#fin-table-apply-mob a.button,
+#fin-calc-adjust a.button,
+a#finance_apply.button,
+.sidebar-widget input.button,
+#partex-apply input.button,
+#sellcar-submit .button,
+#car-locator-apply .button,
+#booking-form-submit .button,
+#repair-enquiry-submit .button,
+.favourites-button button.button,
+.favourites-button a.button,
+a.button.bespoke,
+.button.full,
+.button,
+a.button,
+.button.silver,
+input[type=submit],
+input[type=submit].button,
+.widget-search-full input.button,
+.widget-search-full button.button,
+#search-advanced button.button {
+  .btn;
+}
+
+
+.button.large,
+input[type=button].large,
+input[type=submit].large {
+  .btn;
+  height: auto;
+}
+
+
+
+#recaptcha_widget, #new_captcha {
+  margin-bottom: 20px;
+  overflow: hidden;
+  clear: left;
+}
+
+
+#sellcar-submit input[type=submit] {
+  float: right;
+}
+
+.com-remove a.favourite {
+  font-size: 9px;
+}
+
+
+
+
+// Tables
+
+.finance-table-wrap table,
+table {
+  background: transparent;
+  border: 1px solid #c5c5c5;
+
+  td, th {
+    border-bottom: 1px solid #c5c5c5;
+    border-right: 1px solid #c5c5c5;
+  }
+
+  th,
+  th:nth-child(2n+1)
+  th:nth-child(2n+2) {
+    background: #e5e5e5;
+  }
+
+  td,
+  td:nth-child(2n+1)
+  td:nth-child(2n+2) {
+    background: #f5f5f5;
+  }
+}
