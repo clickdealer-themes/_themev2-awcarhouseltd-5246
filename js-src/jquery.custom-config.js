@@ -1,5 +1,19 @@
 $(document).ready(function() {
 
+
+   // Menu open
+  $(function() {
+    $('#mainNavToggle,#mainNavToggleClose').click(function() {
+      toggleNav();
+    });
+  });
+  
+  function toggleNav() {
+    $("#primary-navigation").toggleClass("menuOpen");
+    $("body").toggleClass("overlayOpen");
+  }
+  // END Menu open 
+  
   $('#mobile-open').click(function () {
     $(".results-layout__search").toggleClass("toggled");
     $('body').css('overflow-y','hidden');

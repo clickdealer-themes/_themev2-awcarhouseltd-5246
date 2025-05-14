@@ -1,773 +1,540 @@
-
-@right-col-width: 340px;
-
-#header {
+.siteHeader {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   width: 100%;
+  left: 0;
+  top: 0;
   background: white;
-  box-shadow: 0 3px 10px fade(black,12%);
-  z-index: 99;
+  z-index: 10001;
+  box-shadow: 0 8px 48px fade(@primary-colour, 30%);
 
-  @media @mobile {
-    box-shadow: none;
 
-    .container .row {
-      height: auto !important;
+  .wrapper {
+    padding: 0 48px !important;
+
+    @media @desk {
+      padding: 0 20px !important;
     }
 
-    .hdr-logo {
-      .flex-display(@display: flex);
-      .flex-direction(@direction: column);
-      .justify-content(@justify: center);
-      .align-items(@align: center);
-      position: fixed;
-      top: 0;
-      left: 50%;
-      width: calc(~'100% - 100px');
-      height: 50px;
-      padding: 3px 0;
-      margin-top: 0;
-      margin-bottom: 0;
-      background: 0 0;
-      text-align: center;
-      box-shadow: none;
-      transform: translateX(-50%);
-      z-index: 9999;
-
-      img {
-        max-height: 44px;
-        line-height: 44px;
-      }
+    @media @mobile {
+      padding: 0 0 0 8px !important;
     }
-
-    .wrapper {
-      padding: 0 !important;
-    }
-  }
-
-  .container {
-    height: auto;
-    padding: 0;
-    overflow: visible;
-  }
-
-  a {
-    text-decoration: none;
   }
 }
 
 .header {
-  .flex-display(@display: flex);
-  .align-items(@align: center);
-  .justify-content(@justify: space-between);
-
-  @media @mobile {
-    padding: 0;
-    display: block;
-  }
+  display: flex;
+  align-items: center;
 
   &__logo {
-    padding: 0;
-    flex: 0 0 auto;
-    margin-right: 20px;
+    flex: 0 1 auto;
+    margin-right: 40px;
 
-    @media @mobile {
-      margin-right: 0;
+    @media @lap {
+      margin-right: 30px;
     }
 
-    .hdr-logo {
+    @media @tablet {
+      margin-right: 20px;
+    }
 
-      img,
-      svg {
-        height: 60px;
+    @media @mobile {
+      margin-right: auto;
+    }
 
-        @media @tablet {
-          height: 35px;
-        }
+    img {
+      // height: 60px;
+      height: 52px;
 
-        @media @mobile {
-          height: 50px;
-        }
+      @media @lap {
+        height: 42px;
+      }
+
+      @media @tablet {
+        height: 40px;
+      }
+
+      @media @mobile {
+        height: 33px;
       }
     }
   }
 
-  &__nav {
-
-  }
-
-  &__contact {
-    .flex-grow(@grow: 0);
-    .flex-shrink(@shrink: 0);
-    .flex-basis(@width: auto);
+  &__quickNav {
+    flex: 0 1 auto;
+    margin-right: auto;
 
     @media @mobile {
       display: none;
     }
-
-    ul {
-      transition: all 0.3s linear;
-
-      li {
-        float: left;
-        margin: 0;
-        transition: all 0.3s linear;
-
-        a {
-          color: @primary-colour;
-          font-size: 20px;
-          line-height: 32px;
-          font-weight: 400;
-          margin: 0;
-          padding: 0;
-          transition: all .2s linear;
-
-          @media @tablet {
-            font-size: 14px;
-            line-height: 24px;
-          }
-
-          &:hover {
-            color: @accent-colour;
-          }
-        }
-
-        span {
-          color: @accent-colour;
-          font-size: 20px;
-          line-height: 32px;
-
-          @media @tablet {
-            font-size: 14px;
-            line-height: 24px;
-          }
-        }
-
-        &:last-child {
-          margin: 0;
-        }
-      }
-    }
-  }
-}
-
-
-
-
-// Navigation
-
-// Top level
-@mm-link-colour: @text-colour; // link colours
-@mm-link-bg-colour: none;
-
-@mm-link-hover-colour: @accent-colour; // link hover colours
-@mm-link-hover-bg-colour: none;
-
-@mm-link-current-colour: @accent-colour;
-@mm-link-current-bg-colour: none;
-
-// Sub Menu
-@mm-sub-bg-colour: @primary-colour;
-@mm-sub-link-colour: white;
-@mm-sub-link-border-colour: fade(white,10%);
-
-// hover states
-@mm-sub-link-hover-colour: white;
-@mm-sub-link-hover-border-colour: @accent-colour;
-
-
-
-
-/////////////////////////////////////
-// ------- DESKTOP MEGAMENU -------//
-/////////////////////////////////////
-
-nav#primary-navigation {
-  background: none;
-  font-family: @body-font;
-  border: none;
-  z-index: 999;
-
-  @media @mobile {
-    height: 50px;
-    background: white;
-    box-shadow: 0 0 10px 0 fade(black,15%);
-    z-index: 998;
   }
 
-  .container {
-    margin: 0 auto; // overrides the structure styling
-  }
+  &__favourites {
+    flex: 0 0 auto;
+    margin-right: 48px;
 
-  .wrapper {
-    padding: 0 !important;
-  }
-}
-
-.megamenu {
-  .flex-display(@display: flex);
-
-  @media @mobile {
-    display: block;
-  }
-
-  // Mobile state only
-  &.toggled {
-    background: @custom-colour1;
-    min-height: calc(~'100vh - 50px - 44px');
-    z-index: 1;
-    transition: none;
-    overflow: visible;
-    position: relative;
-
-
-    .megamenu__listitem {
-      background: @custom-colour1;
+    @media @lap {
+      margin-right: 24px;
     }
 
-    a.megamenu__listitem__link,
-    a:visited.megamenu__listitem__link {
-      color: @text-colour;
-      padding: 0;
-      background: none;
-      font-size: 14px;
-      line-height: 3;
-      border-color: fade(black,10%);
-
-      &:hover,
-      &:focus {
-        color: @text-colour  !important;
-      }
+    @media @mobile {
+      margin-right: 16px;
     }
   }
 
-  &__listitem {
-    .flex-grow(@grow: 1);
-    .flex-shrink(@shrink: 1);
-    .flex-basis(@width: auto);
-    position: static !important;
+  &__mainNav {
+    flex: 0 0 104px;
+
+    @media @lap {
+      flex: 0 0 96px;
+    }
 
     @media @tablet {
-      margin-left: 0px;
-      margin-right: 0px;
+      flex: 0 0 80px;
+    }
+  }
+
+  &__contact {
+    margin-right: 20px !important;
+    font-size: 18px;
+
+    i {
+      margin-right: 3px !important;
+      width: 18px;
+      text-align: center;
     }
 
-    @media @mobile {
-      margin-left: 0;
-      margin-right: 0;
+    @media @desk {
+      display: none;
+    }
+  }
+}
+
+
+// Sub Nav styles
+.quickNav {
+  display: flex;
+  align-items: center;
+
+  &__item {
+    flex: 0 0 auto;
+    margin-right: 15px;
+
+    @media @lap {
+      margin-right: 10px;
     }
 
-    &#listitem__used-cars--parent,
-    &#listitem__used-vans--parent,
-    &#listitem__used-bikes--parent {
-      position: static !important;
-
-      .megasubmenu {
-        left: 0 !important;
-        width: 100% !important;
-        position: fixed;
-        left: 0;
-        right: 0;
-      }
-    }
-
-    @media @mobile {
-      &#listitem__used-cars--parent.toggled,
-      &#listitem__used-vans--parent.toggled,
-      &#listitem__used-bikes--parent.toggled,
-      &.toggled {
-        position: absolute !important;
-      }
-    }
-
-    &.toggled {
-      a.megamenu__listitem__link,
-      a:visited.megamenu__listitem__link {
-        font-size: 16px;
-      }
-
-      & > .megasubmenu {
-        overflow: scroll;
-        max-height: calc(~'100vh - 50px - 50px - 44px') !important;
-      }
-    }
-
-    a&__link,
-    a:visited&__link {
-      color: @mm-link-colour;
-      background: @mm-link-bg-colour;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 80px;
+    a {
+      color: @accent-colour;
+      background: fade(@accent-colour, 20%);
+      padding: 4px 12px;
+      border-radius: 99px;
+      cursor: pointer;
+      transition: all 200ms ease-in-out;
 
       @media @lap {
         font-size: 14px;
-        padding: 0 5px;
       }
 
       @media @tablet {
         font-size: 12px;
-        line-height: 60px;
       }
 
-      // Arrow on submenu styles
-      &:before {
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 0 10px 10px 10px;
-        border-color: transparent transparent @mm-sub-bg-colour transparent !important;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-      }
-
-      i {
-        margin-left: 0; //reduce space between link and dropdown icon
-      }
-
-      &--current {
-        background: @mm-link-current-bg-colour;
-        color: @mm-link-current-colour;
-
-        &:hover,
-        &:focus,
-        &:active {
-          color: @mm-link-hover-colour;
-          background: @mm-link-hover-bg-colour;
-        }
+      &:hover,
+      &:focus {
+        color: @accent-green;
+        background: fade(@accent-green, 20%);
       }
     }
+  }
+}
 
-    // Desktop hovered state
 
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 124px;
+  height: 124px;
+  background: @accent-colour;
+  cursor: pointer;
+  transition: all 0.2s linear;
+
+  @media @lap {
+    width: 96px;
+    height: 96px;
+  }
+
+  @media @tablet {
+    width: 80px;
+    height: 80px;
+  }
+
+  @media @mobile {
+    height: 50px;
+    width: 50px;
+  }
+
+  .hamburgerWrapper {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 32px;
+    height: 32px;
+    margin-bottom: 10px;
+
+    @media @mobile {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  span.header-text {
+    color: white;
+    font-size: 12px;
+
+    @media @mobile {
+      display: none;
+    }
+  }
+
+  .top-bun,
+  .meat,
+  .bottom-bun {
+    height: 4px;
+    width: 75%;
+    background: white;
+    border-radius: 99px;
+
+    @media @mobile {
+      height: 4px;
+    }
+  }
+
+  .meat {
+    width: 100%;
+    transition: all 200ms ease-in-out;
+  }
+
+  .bottom-bun {
+    transition: all 400ms ease-in-out;
+  }
+
+  &:hover {
+    background: @accent-green;
+
+    span.header-text {
+      color: @accent-colour;
+    }
+
+    .top-bun,
+    .meat,
+    .bottom-bun {
+      width: 100%;
+      background: @accent-colour;
+    }
+
+    .top-bun {
+      animation: burger-hover 1s infinite ease-in-out alternate;
+    }
+
+    .meat {
+      animation: burger-hover 1s infinite ease-in-out alternate forwards 200ms;
+      transition: all 200ms ease-in-out;
+    }
+
+    .bottom-bun {
+      animation: burger-hover 1s infinite ease-in-out alternate forwards 400ms;
+      transition: all 400ms ease-in-out;
+    }
+  }
+}
+
+
+//Animation Keyframes
+@keyframes burger-hover {
+  0% {
+    width: 100%;
+  }
+
+  50% {
+    width: 50%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+
+
+// Navigation
+nav#primary-navigation {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background: fade(@custom-colour4, 80%);
+  transform: translateX(200%);
+  transition: transform 400ms ease-in-out;
+  z-index: 999999;
+
+  &.menuOpen {
+    transform: translateX(0);
+  }
+
+  @media @mobile {
+    padding: 0;
+  }
+}
+
+// Menu structure
+.mainMenuWrapper {
+  display: flex;
+  justify-content: flex-end;
+  height: 100vh;
+
+  .mainMenuContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 35vw;
+    min-width: 320px;
+    padding: 96px 48px;
+    background: @accent-colour;
+
+    @media @mobile {
+      align-items: flex-start;
+      flex: 1 1 100vw;
+      width: 100vw;
+      min-width: initial;
+      padding: 32px 22px 80px 32px; // Allow for space to the right for scrollbar
+    }
+  }
+
+  #mainNavToggleClose {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    width: 96px;
+    height: 96px;
+    margin-right: 48px;
+    background: @primary-colour;
+    color: white;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    @media @mobile {
+      position: absolute;
+      bottom: 46px;
+      left: 50%;
+      width: 64px;
+      height: 64px;
+      margin-right: 0;
+      margin-top: 24px;
+      transform: translateX(-50%);
+    }
+
+    &:hover {
+      border: 2px solid white;
+      box-shadow: 0 4px 16px fade(white, 20%);
+    }
+
+    svg {
+      height: 64px;
+      width: 64px;
+
+      @media @mobile {
+        height: 48px;
+        width: 48px;
+      }
+
+      path {
+        fill: white;
+      }
+    }
+  }
+}
+
+
+// Menu styles
+.megamenu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @media @mobile {
+    height: 100%;
+    max-height: calc(~'100vh - 80px - 32px');
+    background: transparent;
+    overflow-y: auto;
+  }
+
+  &__listitem {
+    width: 100%;
+    text-align: left;
+    transition: all 200ms ease-in-out;
+
+    @media @mobile {
+      transition: none;
+    }
+
+    // Top level hover styles
     &:hover,
-    &:active,
     &:focus {
-      color: @mm-link-hover-colour;
-      background: @mm-link-hover-bg-colour; // Important to put any background colour on the hover of the li & not the a link
+      background: transparent;
 
-      &:nth-last-child(2),
-      &:last-child {
-        &>.megasubmenu {
-          right: 0px !important;
-
-          @media @mobile {
-            left: 0;
-          }
-        }
+      // Override structure hover behaviour
+      &>.megasubmenu {
+        max-height: 0;
       }
 
       a.megamenu__listitem__link,
       a:visited.megamenu__listitem__link {
-        color: @mm-link-hover-colour;
+        border-bottom: 1px solid white;
+      }
+    }
 
-        @media @mobile {
-          color: @primary-colour  !important;
-        }
+    // Toggled state
+    &.toggled {
+      width: 100%;
+      height: 100%;
+      max-height: 100vh;
+      min-height: 0;
+      background: @accent-colour;
+
+      &>.megasubmenu {
+        // max-height: calc(~'100vh - 80px - 32px') !important;
+        min-height: 0 !important;
       }
 
-      // Display arrow above submenu
-      &.sub {
-        a.megamenu__listitem__link:before,
-        a:visited.megamenu__listitem__link:before {
-          content: '';
+      a.megamenu__listitem__link,
+      a:visited.megamenu__listitem__link {
+        position: sticky;
+        top: 0;
+        background: @accent-colour;
+        color: white;
+        font-size: 24px;
+        font-weight: 400;
+        border-bottom: 1px solid white;
+        z-index: 11;
 
-          @media @mobile {
-            content: none;
+        @media @mobile {
+          font-size: 20px;
+        }
+
+        i {
+          float: right;
+          font-size: 24px;
+          margin-top: 8px;
+          margin-right: 0;
+          transform: none;
+
+          &:before {
+            .char(times-l);
           }
         }
       }
     }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  a.megamenu__listitem__link,
+  a:visited.megamenu__listitem__link {
+    padding: 0;
+    background: transparent;
+    color: white;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 44px;
+    border-bottom: 1px solid fade(white, 16%);
+    transition: all 200ms ease-in-out;
+
+    @media @mobile {
+      margin: 0 16px 0 0;
+      font-size: 20px;
+    }
+
+    &--current {
+      background: transparent;
+      border-bottom: 1px solid white;
+    }
+
+    i {
+      float: right;
+      font-size: 24px;
+      margin-top: 8px;
+
+      @media @mobile {
+        line-height: 1;
+      }
+    }
+  }
+
+  // Override structure border
+  .megamenu__listitem:last-child a.megamenu__listitem__link,
+  .megamenu__listitem:last-child a:visited.megamenu__listitem__link {
+    border-bottom: 1px solid fade(white, 16%) !important;
+  }
+
+  .megamenu__listitem:last-child:hover a.megamenu__listitem__link,
+  .megamenu__listitem:last-child:hover a:visited.megamenu__listitem__link {
+    border-bottom: 1px solid white !important;
   }
 }
-
 
 .megasubmenu {
-  left: auto;
-  width: auto;
-  min-width: 250px;
-  background: @mm-sub-bg-colour;
-  text-align: left;
-  border-radius: 0;
-
-  @media @mobile {
-    background: @custom-colour1;
-  }
-
-  .container {
-    max-width: 1600px;
-    min-width: initial;
-  }
+  background: @accent-colour;
 
   &__list {
-    flex-direction: column;
+    padding: 16px 0;
+    margin: 0;
 
     @media @mobile {
-      margin: 0 auto !important;
+      padding: 16px 10px 0 0;
     }
 
     &--brand {
-      column-count: 5;
-      @media @mobile {
-        column-count: 2;
-      }
-    }
-
-    &--footlinks {
-      display: block;
-
-      @media @mobile {
-        column-count: 1;
-      }
-    }
-  }
-
-  &__listitem {
-    flex: 0 0 auto;
-
-    @media @mobile {
-      margin-right: 0;
-    }
-
-    &--brand {
-      margin-right: 0;
-    }
-  }
-
-  &__listitem,
-  &__listitem--footlink {
-
-    a.megasubmenu__listitem__link,
-    a:visited.megasubmenu__listitem__link {
-      color: @mm-sub-link-colour;
-      border-bottom: 1px solid @mm-sub-link-border-colour;
-
-      @media @mobile {
-        color: @text-colour;
-        border-bottom-color: fade(black,10%);
-      }
-
-      @media @tablet {
-        font-size: 11px;
-      }
-
-      &:hover,
-      &:active,
-      &:focus {
-        color: @mm-sub-link-hover-colour;
-        border-bottom: 1px solid @mm-sub-link-hover-border-colour;
-
-        @media @mobile {
-          color: @text-colour;
-          border-bottom-color: fade(black, 10%);
-        }
-      }
-    }
-
-    &--brand {
-
-      // Override individual brand link styles
-      a.megasubmenu__listitem__link,
-      a:visited.megasubmenu__listitem__link {
-        color: @mm-sub-link-colour;
-        border-bottom: 1px solid @mm-sub-link-border-colour;
-
-        &:hover,
-        &:active,
-        &:focus {
-          color: @mm-sub-link-hover-colour;
-          border-bottom: 1px solid @mm-sub-link-hover-border-colour;
-        }
-      }
-    }
-
-    &__listitem--footlink {
-      @media @mobile {
-        display: block !important;
-      }
-    }
-  }
-}
-
-
-@media @mobile {
-  // Adds margin to the body for header and tab bar
-  body {
-    margin-top: 50px;
-    margin-bottom: 44px;
-  }
-
-} // End mobile styles
-
-
-// Styles for toggle buttons in the mobile nav.
-.toggles {
-
-  .toggle {
-    color: @text-colour;
-
-    &:hover,
-    &:visited,
-    &:focus {
-      color: @accent-colour;
-    }
-  }
-}
-
-
-// bottom bar CTA
-#tab-bar {
-  i {
-    font-weight: 400;
-  }
-
-  a:focus,
-  a:hover,
-  a:visited:focus,
-  a:visited:hover {
-    color: @accent-colour;
-  }
-}
-
-
-// Top right search button
-#dropdown-search {
-  background: @custom-colour1;
-
-  .dropdown-search {
-    &__title {
-      margin-bottom: 10px;
-      padding-bottom: 13px;
-      color: @heading-colour;
-      font-family: @heading-font;
-
-      &:after {
-        border-bottom: 3px solid @accent-colour;
-      }
-    }
-
-    &__vehtype input[type=radio]:checked+label.dropdown-search__label--radio {
-      background: @accent-colour;
-      color: white;
-    }
-
-    &__label--radio {
-      color: @primary-colour;
-      border-color: @primary-colour;
-    }
-
-    &__label {
-      color: @text-colour;
-    }
-
-    &__button.button {
-      .btn;
-    }
-  }
-}
-
-
-
-// Finance/Price/Brands styles
-//////////////////////////////////////////
-/* -------------- Megamenu ------------ */
-//////////////////////////////////////////
-
-nav#primary-navigation .l-megamenu {
-
-  .wrapper {
-    padding: 0 20px !important;
-  }
-}
-
-.o-megamenu {
-  .flex-display(@display: flex);
-  padding: 20px 0;
-  margin: 0 -40px -20px 0;
-
-  @media @mobile {
-    flex-wrap: wrap;
-    width: 100%;
-  }
-  
-  .column-1 {
-    flex: 0 0 calc(~'20% - 40px');
-    width: calc(~'20% - 40px');
-    margin-right: 40px;
-    margin-bottom: 20px;
-
-    @media @tablet {
-      flex: 0 0 calc(~'30% - 40px');
-      width: calc(~'30% - 40px');
-    }
-    @media @mobile {
-      flex: 0 0 100%;
-      width: 100%;
-      order: 2;
-    }
-
-  }
-
-  .column-2 {
-    flex: 0 0 calc(~'20% - 40px');
-    width: calc(~'20% - 40px');
-    margin-right: 40px;
-    margin-bottom: 20px;
-
-    @media @tablet {
-      display: none;
-    }
-    @media @mobile {
-      display: none;
-    }
-  }
-
-  .column-3 {
-    flex: 0 0 calc(~'60% - 40px');
-    width: calc(~'60% - 40px');
-    margin-right: 40px;
-    margin-bottom: 20px;
-    display: flex;
-
-    @media @tablet {
-      flex: 0 0 calc(~'70% - 40px');
-      width: calc(~'70% - 40px');
-    }
-    @media @mobile {
-      flex: 0 0 100%;
-      width: 100%;
-      order: 1;
-    }
-  }
-
-  .column-4 {
-    display: none;
-  }
-
-  .megamenu-group {
-
-    &__title {
-      margin: 0 0 10px 0;
-      color: white;
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 1.2;
-      text-align: left;
-
-      @media @mobile {
-        color: @heading-colour;
-        font-size: 16px;
-      }
-    }
-
-    &__list {
-      margin: 0 0 20px;
-      display: block !important;
-      text-align: left;
-
-      li {
-        position: relative !important;
-        color: white;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-
-        @media @tablet {
-          font-size: 14px;
-        }
-
-        @media @mobile {
-          font-size: 14px;
-        }
-
-        a {
-          padding: 0;
-          margin-bottom: 10px;
-          color: @mm-sub-link-colour;
-          font-size: 14px;
-          font-weight: 700;
-          border-bottom: 1px solid @mm-sub-link-border-colour;
-
-          @media @mobile {
-            color: @text-colour;
-            font-size: 11px;
-            font-weight: 700;
-            line-height: 2.5;
-            border-bottom-color: fade(black,10%);
-          }
-
-          &:hover {
-            color: @mm-sub-link-hover-colour;
-            border-bottom: 1px solid @mm-sub-link-hover-border-colour;
-
-            @media @mobile {
-              color: @text-colour;
-              border-bottom-color: fade(black,10%);
-            }
-          }
-        }
-      }
-
-    }
-
-  }
-
-  .megamenu-group--used-cars {
-    margin: 0 0 40px 0;
-
-    @media @tablet {
-      margin: 0 0 30px 0;
-    }
-
-    @media @mobile {
-
-      .megamenu-group__title {
-        display: none;
-      }
-    }
-  }
-
-  .megamenu-group--used-vans {
-    margin: 0 0 40px 0;
-
-    @media @tablet {
-      margin: 0 0 30px 0;
-    }
-
-    @media @mobile {
-
-      .megamenu-group__title {
-        display: none;
-      }
-    }
-  }
-
-  .megamenu-group--brands {
-    width: 100%;
-
-    ul {
       column-count: 4;
-      column-gap: 20px;
 
-      @media @tablet {
+      @media @lap {
         column-count: 3;
       }
 
       @media @mobile {
         column-count: 2;
-        margin-bottom: 50px;
-      }
-
-      li {
-        break-inside: avoid-column;
-        overflow: initial;
       }
     }
   }
+
+  &__listitem,
+  &__listitem--footlink {
+    flex: 0 0 auto;
+    width: 100%;
+    margin: 0;
+
+    a.megasubmenu__listitem__link,
+    a:visited.megasubmenu__listitem__link {
+      color: white;
+      border-bottom: 1px solid fade(white, 16%);
+
+      &:hover,
+      &:focus {
+        color: white;
+        border-bottom: 1px solid white;
+      }
+    }
+  }
+}
+
+
+#tab-bar {
+  display: none;
 }

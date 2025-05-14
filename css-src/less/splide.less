@@ -1,0 +1,47 @@
+@import "https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css";
+
+// Splide Arrows
+.splide__arrow {
+  height: 40px;
+  width: 40px;
+  background: white;
+  color: @primary-colour;
+  font-size: 22px;
+  border: 2px solid @primary-colour;
+  border-radius: 99px;
+  transition: all 200ms ease-in-out;
+
+  &:hover {
+    color: @accent-colour;
+    border: 2px solid @accent-colour;
+  }
+
+  &--prev {
+    right: calc(~'100% + 16px');
+    left: auto;
+  }
+  &--next {
+    left: calc(~'100% + 16px');
+    right: auto;
+  }
+}
+
+// Pagination
+.splide__pagination {
+  position: static;
+
+  .splide__pagination__page {
+    background: @custom-colour2;
+    opacity: 1;
+    transition: all 200ms ease-in-out;
+
+    &.is-active,
+    &:hover {
+      background: @accent-colour;
+    }
+
+    &:hover {
+      border: 0;
+    }
+  }
+}
