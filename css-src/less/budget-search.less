@@ -1,0 +1,381 @@
+// finance budget search
+.row-block--finance-block {
+	padding: 70px 0 90px 0;
+
+	.financeSearch {
+		.flex-display();
+		.align-items(@align: center);
+
+		@media @mobile {
+			.flex-wrap(@wrap: wrap);
+		}
+
+		&__slider {
+			.flex-grow(@grow: 0);
+			.flex-shrink(@shrink: 1);
+			.flex-basis(@width: 45%);
+			z-index: 2;
+
+			@media @mobile {
+				.flex-basis(@width: 100%);
+			}
+
+			.budgetSlider {
+				position: relative;
+				border-radius: 60px 0 0 60px;
+				height: 500px;
+				.flex-display();
+				.flex-direction(@direction: column);
+				.justify-content(@justify: center);
+				z-index: 4;
+
+				@media @lap {
+					height: 450px;
+				}
+
+				@media @tablet {
+					height: 400px;
+				}
+
+
+				@media @mobile {
+					width: 100%;
+					height: 300px;
+					border-radius: 40px 40px 0 0;
+				}
+
+				// styles below
+			}
+		}
+
+		&__img {
+			.flex-grow(@grow: 0);
+			.flex-shrink(@shrink: 1);
+			.flex-basis(@width: 55%);
+			z-index: 1;
+
+			@media @mobile {
+				.flex-basis(@width: 100%);
+			}
+
+			img {
+				border-radius: 0 60px 60px 0;
+				object-fit: cover;
+				height: 500px;
+				width: 100%;
+
+				@media @lap {
+					height: 450px;
+				}
+
+				@media @tablet {
+					height: 400px;
+				}
+
+				@media @mobile {
+					border-radius: 0 0 40px 40px;
+					height: 250px;
+				}
+			}
+		}
+	}
+}
+
+// budgetSlider 
+.budgetSlider {
+	padding: 60px 3px 60px 60px;
+	background: #2d2d2d;
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: calc(100% - 1px);
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 500px 0 0 200px;
+		border-color: transparent transparent transparent#2d2d2d;
+		z-index: 3;
+
+		@media @lap {
+			border-width: 450px 0 0 150px;
+		}
+
+		@media @tablet {
+			border-width: 400px 0 0 150px;
+		}
+
+		@media @mobile {
+			display: none;
+		}
+	}
+
+	@media @lap {
+		padding: 50px 3px 50px 50px;
+	}
+
+	@media @tablet {
+		padding: 40px 3px 40px 40px;
+	}
+
+	@media @mobile {
+		padding: 40px;
+	}
+
+	&__heading {
+		display: block;
+		margin-bottom: 36px;
+		color: white;
+		font-size: 30px;
+		line-height: 1;
+		font-weight: 900;
+
+		@media @tablet {
+			font-size: 27px;
+		}
+
+		@media @mobile {
+			font-size: 24px;
+		}
+	}
+
+	p {
+		font-size: 18px;
+	}
+
+	&__pills {
+		.flex-display();
+		.flex-wrap(@wrap: wrap);
+		margin: 0 -6px 36px -6px;
+
+		@media @tablet {
+			display: none;
+		}
+
+		.monthlyPill {
+			.flex-grow(@grow: 0);
+			.flex-shrink(@shrink: 1);
+			.flex-basis(@width: calc(25% - 12px));
+			margin: 6px;
+			color: #555555;
+			background: #EAEAEA;
+			border: 1px solid fade(white, 20%);
+			padding: 12px 10px;
+			box-sizing: border-box;
+			border-radius: 99px;
+			text-align: center;
+			font-size: 13px;
+			transition: .2s all linear;
+			line-height: 1;
+
+			&:hover {
+				border-color: fade(white, 50%);
+				background-color: black;
+				color: white;
+			}
+
+			@media @desk {
+				font-size: 11px;
+			}
+
+			@media @tablet {
+				.flex-basis(@width: calc((100% / 3) - 6px));
+			}
+		}
+	}
+}
+
+#budgetSlider {
+	position: relative;
+	text-align: left;
+
+	.form-group {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		// margin-right: -16px;
+		margin-bottom: 16px;
+	}
+
+	label,
+	#amount-budget-range-min {
+		padding: 0;
+		color: white;
+		font-family: @body-font;
+		font-size: 20px;
+		line-height: 32px;
+		font-weight: 400;
+
+		@media @tablet {
+			font-size: 17px;
+		}
+	}
+
+	#amount-budget-range-min {
+		width: 95px;
+		height: 32px;
+		padding: 0;
+		background: transparent;
+		color: white;
+		text-indent: 0;
+		box-shadow: none;
+		border: none;
+		border-radius: 0;
+		font-weight: 700;
+		font-size: 30px;
+		margin: 0 0 0 16px;
+
+		@media @tablet {
+			font-size: 26px;
+		}
+
+		@media @mobile {
+			font-size: 26px;
+		}
+	}
+
+	.slider-group {
+		position: relative;
+		display: flex;
+		width: 100%;
+		margin-top: 4px;
+		margin-bottom: 36px;
+
+		span {
+			margin-right: 32px;
+			color: @text-colour;
+			font-size: 16px;
+			font-weight: bold;
+
+			@media @mobile {
+				position: absolute;
+				top: calc(~'100% + 8px');
+				margin-right: 0;
+
+				&:first-of-type {
+					left: 0;
+				}
+
+				&:last-of-type {
+					right: 0;
+				}
+			}
+		}
+
+		#slider-range-min {
+			width: calc(100% - 40px);
+			height: 40px;
+			margin-bottom: 0;
+			background: fade(white, 15%);
+			position: relative;
+			border-radius: 99px 0 0 99px;
+
+			&:after {
+				content: '';
+				position: absolute;
+				height: 100%;
+				width: 40px;
+				left: 100%;
+				background: fade(white, 15%);
+				border-radius: 0 99px 99px 0;
+			}
+
+			@media @lap {
+				height: 30px;
+				width: calc(100% - 30px);
+
+				&:after {
+					width: 30px;
+				}
+			}
+
+			@media @mobile {
+				margin-right: 0;
+			}
+
+			.ui-slider-range {
+				background: linear-gradient(to left, lighten(@accent-colour, 15%), @accent-colour);
+				padding-right: 40px;
+				box-sizing: content-box;
+
+				@media @lap {
+					padding-right: 30px;
+				}
+			}
+
+			.ui-slider-handle {
+				position: absolute;
+				top: 4px; // Calc half of height of handle - slider range
+				width: 32px;
+				height: 32px;
+				margin-left: 3px;
+				background: white;
+				border-radius: 99px;
+				cursor: ew-resize !important;
+
+				@media @lap {
+					top: 3px;
+					width: 23px;
+					height: 23px;
+				}
+
+				&:focus {
+					outline: none;
+				}
+
+				&:before,
+				&:after {
+					content: '';
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					height: 12px;
+					width: 3px;
+					border-radius: 99px;
+					background: @primary-colour;
+					transform: translateY(-50%);
+
+					@media @lap {
+						height: 10px;
+						width: 2px;
+					}
+				}
+
+				&:before {
+					margin-left: -3px;
+
+					@media @lap {
+						margin-left: -2px;
+					}
+				}
+
+				&:after {
+					margin-left: 3px;
+
+					@media @lap {
+						margin-left: 2px;
+					}
+				}
+			}
+		}
+	}
+
+	#button-budget-range-min {
+		box-shadow: 0 0 0 1px @accent-colour;
+		font-size: 16px;
+		padding: 12px 24px;
+		border-radius: 99px;
+
+		@media @tablet {
+			font-size: 14px;
+			padding: 10px 20px;
+		}
+
+		&:hover {
+			background: white;
+			color: @primary-colour !important;
+			box-shadow: 0 0 0 1px white;
+		}
+	}
+}

@@ -84,12 +84,12 @@
 .o-search.o-search--results {
   position: sticky;
   position: -webkit-sticky;
-  top: 100px; // Adjust this based on the height of the header + 20px
+  top: 108px; // Adjust this based on the height of the header + 20px
   overflow: auto;
   overflow-x: hidden;
 
   @media @tablet {
-    top: 70px; // Adjust this based on the height of the header + 10px
+    top: 66px; // Adjust this based on the height of the header + 10px
   }
 
   @media @mobile {
@@ -366,7 +366,7 @@
       display: block;
       margin-right: 0;
       padding: 8px;
-      background: @custom-colour1;
+      background: @primary-colour;
       box-sizing: border-box;
       z-index: 10;
 
@@ -416,7 +416,7 @@ ol.pagenavi {
       width: 30px;
       height: 30px;
       padding: 0;
-      background: @custom-colour2;
+      background: @text-colour;
       color: white;
       font-weight: 600;
       border-radius: 99px;
@@ -530,7 +530,7 @@ ol.pagenavi {
 
     span {
       font-size: 14px !important;
-      font-weight: bold !important;
+      font-weight: 600 !important;
       text-transform: uppercase !important;
       color: #9b9b9b !important;
     }
@@ -700,13 +700,13 @@ ol.pagenavi {
       .flex-direction(@direction: column);
       .justify-content(@justify: center);
       .align-items(@align: center);
-      background: @primary-colour;
+      background: @accent-colour;
       color: white;
       padding: 10px;
       font-size: 16px;
       font-weight: 700;
       line-height: 1;
-      font-weight: bold;
+      font-weight: 600;
       box-sizing: border-box;
 
       @media @tablet {
@@ -730,7 +730,7 @@ ol.pagenavi {
         color: white;
         font-family: @heading-font;
         line-height: 1;
-        font-weight: bold;
+        font-weight: 600;
 
         span {
           font-size: 10px;
@@ -739,10 +739,10 @@ ol.pagenavi {
     }
 
     &__finance {
-      background: lighten(@primary-colour, 15%);
+      background: @primary-colour;
 
       .label {
-        color: @accent-colour;
+        color: @secondary-colour;
       }
     }
   }
@@ -1176,30 +1176,17 @@ ol.pagenavi {
     display: none !important;
   }
 
-  .row.results__cta--standard.engage-premium-enabled{
-    flex-direction: column;
-  }
-
-  .engage-premium-enabled .results-btn--finance{
-    margin: 0 0 10px 0;
-  }
-
   // results SEO special
   &.grid-view,
   &.list-view {
     .results__cta--standard {
-      .results-btn-view,
-      .results-btn--finance{
+      .results-btn-view {
         flex: 1 1 100%;
         width: 100%;
 
         @media @mobile {
           width: 100% !important;
         }
-      }
-
-      .results-btn--finance{
-        margin-top: 10px;
       }
     }
 

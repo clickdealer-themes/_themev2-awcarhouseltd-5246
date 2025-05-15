@@ -1,11 +1,22 @@
 .car-carousel {
-  background: #f5f5f5;
+  // background: #f5f5f5;
   box-sizing: border-box;
+  padding-top: 0 !important;
+
+  @media @tablet {
+    padding-top: 40px !important;
+  }
+
+  @media @mobile {}
 
   .container,
   .pad-10.overflow-hidden {
     overflow: visible !important;
     padding: 0px;
+  }
+
+  &--representative-example {
+    margin-top: 20px;
   }
 
 }
@@ -19,12 +30,32 @@
   img {
     width: 100%;
     height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
     transition: all .2s linear;
   }
 
-  img[src*="placeholder.svg"] {
-    height: 32px;
-    width: 32px;
+  // img[src*="placeholder.svg"] {
+  //   height: 32px;
+  //   width: 32px;
+  // }
+
+  .row-block__heading {
+    color: black;
+    font-size: 38px;
+    font-weight: 900;
+
+    @media @lap {
+      font-size: 34px;
+    }
+
+    @media @tablet {
+      font-size: 32px;
+    }
+
+    @media @mobile {
+      font-size: 28px;
+    }
   }
 
   .touchcarousel-wrapper {
@@ -41,17 +72,17 @@
     // flex: 0 0 300px;
     .flex-grow(@grow: 0);
     .flex-shrink(@shrink: 0);
-    .flex-basis(@width: 320px);
-    width: 320px;
+    .flex-basis(@width: 384px);
+    width: 384px;
     margin-right: 20px;
     position: relative;
     text-align: center;
     transition: all 0.2s ease-in-out;
     box-sizing: border-box;
     background: white;
-    border: 1px solid darken(@body-colour, 7%);
-    border-radius: 5px;
-    box-shadow: 0 3px 3px #eaeff7;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    // box-shadow: 0 3px 3px #eaeff7;
     box-sizing: border-box;
     overflow: hidden;
 
@@ -61,93 +92,81 @@
     }
 
     .carousel-image {
-      object-fit: cover;
-      width: 100%;
-      height: 200px;
+      position: relative;
+    }
+
+    .carousel-text {
+      margin: 15px 15px 5px 15px;
     }
 
     .carousel-info {
 
-      &__price-block {
-        .flex-display(@display: flex);
-        width: 100%;
-        box-sizing: border-box;
-        min-height: 60px;
-      }
 
-      &__price,
-      &__finance {
-        position: relative;
-        .flex-grow(@grow: 1);
-        .flex-shrink(@shrink: 1);
-        .flex-basis(@width: 50%);
-        width: 50%;
-        .flex-display(@display: flex);
-        .flex-direction(@direction: column);
-        .justify-content(@justify: center);
-        .align-items(@align: center);
-        background: @primary-colour;
-        color: white;
-        padding: 10px;
-        font-size: 16px;
-        font-weight: 700;
-        line-height: 1;
-        font-weight: bold;
-        box-sizing: border-box;
+      &__prices {
+        text-align: left;
+        margin-bottom: 10px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #7C7C7C;
 
-        @media @tablet {
-          font-size: 14px;
-        }
-
-        .label {
-          color: @text-colour;
-          font-family: @body-font;
-          font-size: 10px;
-          line-height: 1;
-          text-transform: uppercase;
-        }
-
-        .price {
+        &--price {
           font-size: 18px;
+          font-weight: 500;
+          color: green;
         }
 
-        .price, .monthly {
-          color: white;
-          font-family: @heading-font;
-          line-height: 1;
-          font-weight: bold;
+        &--finance {
 
-          span {
-            font-size: 10px;
+          font-size: 22px;
+          font-weight: bold;
+          color: black;
+          margin-bottom: 5px;
+
+          .label {
+            font-size: 13px;
+            line-height: 10px;
+            font-weight: 500;
+          }
+
+          .monthly{
+            color: green;
           }
         }
+
+
       }
 
-      &__finance {
-        background: lighten(@primary-colour,15%);
 
-        .label {
-          color: @accent-colour;
-        }
-      }
+
+
 
       &__title {
+        margin-top: 15px !important;
         display: block;
-        margin: 15px 15px 10px 15px;
-        font-family: @heading-font;
-        font-size: 20px;
+        // margin: 15px 15px 5px 15px;
+        // font-family: @heading-font;
+        font-size: 18px;
         line-height: 1.2;
         font-weight: bold;
-        color: @text-colour;
+        color: black !important;
         text-align: left;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        margin-bottom: 3px;
+
+
+        a {
+          color: black;
+
+          &:hover {
+            color: @accent-colour;
+          }
+        }
       }
 
       &__variant {
         display: block;
-        margin: 0 15px 15px 15px;
+        // margin: 0 15px 15px 15px;
         font-family: @heading-font;
         font-size: 16px;
         line-height: 1.2;
@@ -158,6 +177,51 @@
         white-space: nowrap;
         text-overflow: ellipsis;
       }
+
+
+      &__stats {
+        margin: 20px 0;
+        display: flex;
+        justify-content: space-between;
+
+        &--box {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          background-color: #EFEFEF;
+          padding: 10px;
+          border-radius: 3px;
+          width: calc(100% / 3 - 20px);
+
+          i,
+          span {
+            color: #646464;
+          }
+
+          i {
+            font-size: 20px;
+          }
+
+          span {
+            margin-top: 2px;
+            font-size: 14px !important;
+          }
+        }
+      }
+
+      &__btn {
+        width: 100%;
+        text-transform: none !important;
+        border-radius: 30px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        padding: 12px 0;
+      }
+
+
+
+
     }
   }
 }

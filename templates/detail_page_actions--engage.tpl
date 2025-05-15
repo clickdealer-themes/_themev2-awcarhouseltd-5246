@@ -11,4 +11,5 @@
     <li>
         <a href="/email.php?request_video={DETAIL_ID}" class="btn btn--bordered">Video Request</a>
     </li>
+    
 </ul>

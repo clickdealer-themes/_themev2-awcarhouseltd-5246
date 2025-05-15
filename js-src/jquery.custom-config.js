@@ -1,5 +1,47 @@
 $(document).ready(function() {
 
+   $(function () {
+    $("#slider-range-min").slider({
+      range: "min",
+      value: 200,
+      min: 0,
+      max: 1000,
+      step: 25,
+      slide: function (event, ui) {
+        $("#amount-budget-range-min").val("£" + ui.value);
+        $("#button-budget-range-min").attr("href", "/search_page.php?budget=" + ui.value);
+      },
+      blurFunc: $('#amount-budget-range-min').blur(function () {
+        var price = $('#amount-budget-range-min').val().substring(1);
+        $('#slider-range-min').slider('value', parseInt(price));
+        $("#button-budget-range-min").attr("href", "/search_page.php?budget=" + price);
+      })
+    });
+    $("#amount-budget-range-min").val("£" + $("#slider-range-min").slider("value"));
+  });
+
+
+  $(function () {
+    $("#slider-range-min").slider({
+      range: "min",
+      value: 200,
+      min: 0,
+      max: 1000,
+      step: 25,
+      slide: function (event, ui) {
+        $("#amount-budget-range-min").val("£" + ui.value);
+        $("#button-budget-range-min").attr("href", "/search_page.php?budget=" + ui.value);
+      },
+      blurFunc: $('#amount-budget-range-min').blur(function () {
+        var price = $('#amount-budget-range-min').val().substring(1);
+        $('#slider-range-min').slider('value', parseInt(price));
+        $("#button-budget-range-min").attr("href", "/search_page.php?budget=" + price);
+      })
+    });
+    $("#amount-budget-range-min").val("£" + $("#slider-range-min").slider("value"));
+  });
+
+
 
    // Menu open
   $(function() {
@@ -13,7 +55,41 @@ $(document).ready(function() {
     $("body").toggleClass("overlayOpen");
   }
   // END Menu open 
-  
+
+   $(function () {
+    $("#slider-range-min").slider({
+      range: "min",
+      value: 300,
+      min: 100,
+      max: 1000,
+      step: 50,
+      slide: function (event, ui) {
+        $("#amount-budget-range-min").val("£" + ui.value);
+        $("#button-budget-range-min").attr("href", "/search_page.php?budget=" + ui.value);
+      },
+      blurFunc: $('#amount-budget-range-min').blur(function () {
+        var price = $('#amount-budget-range-min').val().substring(1);
+        $('#slider-range-min').slider('value', parseInt(price));
+        $("#button-budget-range-min").attr("href", "/search_page.php?budget=" + price);
+      })
+    });
+    $("#amount-budget-range-min").val("£" + $("#slider-range-min").slider("value"));
+  });
+  // END BudgetSlider
+  // Review Slider
+  $('#review-slider').royalSlider({
+    arrowsNav: true,
+    arrowsNavAutoHide: false,
+    controlNavigation: "none",
+    addActiveClass: true,
+    loop: true,
+    autoPlay: {
+      enabled: true,
+      delay: 8000
+    }
+  });
+  // END Review Slider
+
   $('#mobile-open').click(function () {
     $(".results-layout__search").toggleClass("toggled");
     $('body').css('overflow-y','hidden');

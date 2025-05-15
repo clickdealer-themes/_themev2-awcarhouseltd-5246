@@ -3,15 +3,18 @@
   <div class="row-block car-carousel">
     <div class="wrapper">
       <div class="container">
-      
-        
+
+
         <div id="hmpg-picks-carousel" class="touchcarousel clear-fix">
-          <em class="row-block__heading center">Our latest offers</em>
+          <em class="row-block__heading">Our Latest Offers</em>
           <ul class="touchcarousel-container">
             {PICKS}
           </ul>
         </div>
 
+        <div class="car-carousel--representative-example finance">
+          {GLOBAL_REPRESENTATIVE_EXAMPLE}
+        </div>
 
       </div>
     </div>
