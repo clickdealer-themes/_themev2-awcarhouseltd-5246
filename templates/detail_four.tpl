@@ -5,14 +5,16 @@
       <div class="wrapper">
         <div class="container">
           <div class="dt-header-container">
+
             <!-- Gallery Block -->
             <div class="gallery-block">
               {DETAIL_360_GALLERY}
             </div>
             <!-- // Gallery Block -->
+
             <!-- Info Block -->
             <div class="info-block">
-              
+
               <!-- <div class="listing__location listing__location--{DEALER_LOCATION_SLUG}">
                 <em><i class="fal fa-map-marker-alt"></i> {DEALER_LOCATION_NAME}</em>
               </div> -->
@@ -33,18 +35,22 @@
                 <!-- // Vehicle Title -->
               </div>
               <!-- Vehicle Title Block -->
+
               <!-- Vehicles Spec -->
               <div class="vehicle-spec-list">
                 <ul class="vehicle-spec vehicle-spec--loc-{LOCATION_ID}">
                   <li>{DETAIL_YEAR}</li>
                   <li>{DETAIL_MILEAGE} {ODOMETER_UOM}</li>
-                  <li>{DETAIL_ENGINE_L} ltr</li>
-                  <li>{DETAIL_COLOUR}</li>
-                  <li>{DETAIL_FUEL_TYPE}</li>
-                  <li>{DETAIL_GEARBOX}</li>
+                  <li class="type__car">{DETAIL_ENGINE_L} ltr</li>
+                  <li class="type__electric">Fast charge: {DETAIL_BATTERY_QUICK_CHARGE_TIME} mins</li>
+                  <li class="type__electric">Range: {DETAIL_BATTERY_RANGE_MILES} miles</li>
+                  <li class="type__car">{DETAIL_COLOUR}</li>
+                  <li class="type__car">{DETAIL_FUEL_TYPE}</li>
+                  <li class="type__car">{DETAIL_GEARBOX}</li>
                 </ul>
               </div>
               <!-- // Vehicles Spec -->
+
               <!-- Vehicle Price -->
               <div class="vehicle-price">
                 <div class="vehicle-price__block vehicle-price__block--price">
@@ -54,40 +60,44 @@
                   </div>
                   <!-- <div class="vehicle-price__sub">+ £149 buyers fee</div> -->
                 </div>
-                <div class="vehicle-price__block vehicle-price__block--finance {FINANCE_STATUS}">
+                <a href="#finance-section" class="vehicle-price__block vehicle-price__block--finance {FINANCE_STATUS}">
                   <div class="vehicle-price__label">Finance</div>
                   <div class="vehicle-price__amount">{DETAIL_FINANCE_TEXT}</div>
                   <div class="vehicle-price__sub">
-                    per month on
-                    <a href="#finance-section" class="dt-finance-link">{DETAIL_FACILITY_TYPE}</a>
+                    per month on {DETAIL_FACILITY_TYPE}
                   </div>
-                </div>
+                </a>
               </div>
               <!-- // Vehicle Price -->
 
               <!-- CTA -->
               <div class="vehicle-main-cta">
                 <div class="vehicle-main-cta__button">
-								  {DETAIL_SIDEBAR_RESERVE_BUTTON}
+                  {DETAIL_SIDEBAR_RESERVE_BUTTON}
                 </div>
-              </div>
-              <!-- // CTA -->
-
-              <!-- CTA -->
-              <div class="vehicle-main-cta">
                 <div class="vehicle-main-cta__button">
-                  <a href="#finance-section" class="btn btn--large btn--finance">
-                    Apply For Finance <i class="ci ci-chevron-right"></i>
-                  </a>
+                  <a href="#finance-section" title="Apply For Finance"
+                    class="btn btn--secondary finance {FINANCE_STATUS}">Apply For Finance</a>
                 </div>
               </div>
               <!-- // CTA -->
 
               <!-- Vehicle CTAs -->
-              <div class="vehicle-cta">
-                {v2_DETAIL_PAGE_ACTIONS}
-              </div>
+              {v2_DETAIL_PAGE_ACTIONS}
               <!-- // Vehicle CTAs -->
+
+              <!-- Contact Details -->
+              <ul class="detailContact">
+                <li><a href="tel:{v2_TELEPHONE_NUMBER_NS}"><i class='ci ci-phone'></i> {v2_TELEPHONE_NUMBER}</a></li>
+                <li><a href="mailto:{v2_EMAIL}"><i class='ci ci-envelope'></i> {v2_EMAIL}</a></li>
+              </ul>
+              <!-- // Contact Details -->
+
+              <!-- Click Credit Checker -->
+              <div class="vehicle-credit-check {FINANCE_STATUS}">
+                <click-credit-checker-banner class="app" :vehicle-id="{DETAIL_ID}"></click-credit-checker-banner>
+              </div>
+              <!-- // Click Credit Checker -->
 
             </div>
             <!-- // Info Block -->
@@ -105,18 +115,20 @@
           <h2 class="section-heading">About This Vehicle</h2>
 
           <div class="specifications-container">
-            <div class="spec-list-block">
+
+            <!-- Spec List Car -->
+            <div class="spec-list-block type__car">
               <ul class="dt-spec-list">
                 <li>
                   <span class="dt-spec-list__label">Year</span><span class="dt-spec-list__stat">{DETAIL_YEAR}</span>
                 </li>
                 <!-- <li>
-                  <span class="dt-spec-list__label">Registration</span
-                  ><span class="dt-spec-list__stat">{DETAIL_REGISTRATION}</span>
-                </li> -->
+                <span class="dt-spec-list__label">Registration</span
+                ><span class="dt-spec-list__stat">{DETAIL_REGISTRATION}</span>
+              </li> -->
                 <li>
                   <span class="dt-spec-list__label">Mileage</span><span class="dt-spec-list__stat">{DETAIL_MILEAGE}
-                    {ODOMETER_UOM}</span>
+                    mi</span>
                 </li>
                 <li>
                   <span class="dt-spec-list__label">Engine Size</span><span class="dt-spec-list__stat">{DETAIL_ENGINE_L}
@@ -151,6 +163,74 @@
                 </li>
               </ul>
             </div>
+            <!-- // Spec List Car -->
+
+            <!-- Spec List Electric -->
+            <div class="spec-list-block type__electric">
+              <ul class="dt-spec-list">
+                <li>
+                  <span class="dt-spec-list__label">Year</span><span class="dt-spec-list__stat">{DETAIL_YEAR}</span>
+                </li>
+                <!-- <li>
+                <span class="dt-spec-list__label">Registration</span
+                ><span class="dt-spec-list__stat">{DETAIL_REGISTRATION}</span>
+              </li> -->
+                <li>
+                  <span class="dt-spec-list__label">Mileage</span><span class="dt-spec-list__stat">{DETAIL_MILEAGE}
+                    {ODOMETER_UOM}</span>
+                </li>
+                <li>
+                  <span class="dt-spec-list__label">Battery Range</span><span
+                    class="dt-spec-list__stat">{DETAIL_BATTERY_RANGE_MILES} miles</span>
+                </li>
+                <li>
+                  <span class="dt-spec-list__label">Battery Capacity</span><span
+                    class="dt-spec-list__stat">{DETAIL_BATTERY_CAPACITY} kWh</span>
+                </li>
+                <li>
+                  <span class="dt-spec-list__label">Public Charge Time</span><span
+                    class="dt-spec-list__stat">{DETAIL_BATTERY_QUICK_CHARGE_TIME} mins</span>
+                </li>
+                <li>
+                  <span class="dt-spec-list__label">Home Charge Time</span><span
+                    class="dt-spec-list__stat">{DETAIL_BATTERY_CHARGE_TIME} mins</span>
+                </li>
+                <li>
+                  <span class="dt-spec-list__label">Colour</span><span class="dt-spec-list__stat">{DETAIL_COLOUR}</span>
+                </li>
+                <li>
+                  <span class="dt-spec-list__label">Keepers</span><span
+                    class="dt-spec-list__stat">{DETAIL_OWNERS}</span>
+                </li>
+                <li>
+                  <span class="dt-spec-list__label">Body Style</span><span
+                    class="dt-spec-list__stat">{DETAIL_BODY_TYPE}</span>
+                </li>
+                <li>
+                  <span class="dt-spec-list__label">Transmission</span><span
+                    class="dt-spec-list__stat">{DETAIL_GEARBOX}</span>
+                </li>
+                <li>
+                  <span class="dt-spec-list__label">Fuel Type</span><span
+                    class="dt-spec-list__stat">{DETAIL_FUEL_TYPE}</span>
+                </li>
+                <li>
+                  <span class="dt-spec-list__label">Insurance</span><span
+                    class="dt-spec-list__stat">{DETAIL_INSURANCE_GROUP}</span>
+                </li>
+
+              </ul>
+
+              <br>
+              <div class="dt-electric-explained">
+                <em><strong>Why Go Electric? </strong><a href="/electric-vehicles-explained" target="_blank"
+                    title="Learn More About Electic Vehicles">Electric Vehicles Explained <i
+                      class='ci ci-arrow-right'></i></a></em>
+                <p><small><strong>*Please Note:</strong> Charging and range information is supplied by the manufacturer
+                    and may vary depending on conditions.</small></p>
+              </div>
+            </div>
+            <!-- // Spec List Electric -->
 
             <div class="specification-block">
               <h2>Specification</h2>
@@ -165,6 +245,11 @@
                 <!-- Button -->
                 <button id="dt-description-modal-open" class="spec-button">
                   Description <i class="ci ci-arrow-right"></i>
+                </button>
+                <!-- Button -->
+                <!-- Button -->
+                <button id="dt-charging-modal-open" class="spec-button type__electric">
+                  Charging Information <i class="ci ci-arrow-right"></i>
                 </button>
                 <!-- Button -->
                 <!-- Button -->
@@ -187,6 +272,11 @@
                   Safety <i class="ci ci-arrow-right"></i>
                 </button>
                 <!-- Button -->
+                <!-- Button -->
+                <button id="dt-gallery-modal-open" class="spec-button">
+                  Photo Gallery <i class="ci ci-arrow-right"></i>
+                </button>
+                <!-- Button -->
               </div>
             </div>
 
@@ -200,7 +290,7 @@
                   journey.</p>
                 {DETAIL_SIDEBAR_RESERVE_BUTTON}
               </div>
-              
+
               <div class="panel">
                 <!-- Button -->
                 <!-- Button -->
@@ -215,17 +305,6 @@
               </div>
             </div>
 
-            <div class="photos-block">
-              <h2>Photos</h2>
-              <!-- Photo Gallery -->
-              <div class="dt-photo-gallery">
-                <ul class="dt-photo-gallery__list">
-                  {DETAIL_IMAGES_GRID}
-                  <li id="gallery-btn">More Photos</li>
-                </ul>
-              </div>
-              <!-- // Photo Gallery -->
-            </div>
           </div>
         </div>
       </div>
@@ -239,7 +318,7 @@
         <div class="container">
           <h2 class="section-heading">
             Finance this {SALE_TYPE} from
-            {CURRENCY_SYMBOL}{DETAIL_REGULAR_PAYMENT} per month
+            {CURRENCY_SYMBOL}{DETAIL_REGULAR_PAYMENT} p/m
           </h2>
 
           <!-- Finance plugins -->
@@ -264,23 +343,6 @@
     </section>
     <!-- // Finance Block -->
 
-    <!-- Similar Vehicles -->
-    <section class="dt-similar-section">
-      <div class="wrapper">
-        <div class="container">
-          <h2 class="section-heading">Similar Vehicles</h2>
-
-          <div id="detail-similar-carousel" class="touchcarousel">
-            <div class="container">
-              <ul class="touchcarousel-container">
-                {SIMILAR}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- // Similar Vehicles -->
   </div>
 </div>
 
@@ -309,8 +371,8 @@
         Close <i class="ci ci-times-r"></i>
       </button>
       <h2>Description</h2>
-      <p>{KEY_INFO}</p>
-      <p>{v2_SELECTED_FEATURES}</p>
+      <!-- <p>KEY_INFO</p> -->
+      <!-- <p>v2_SELECTED_FEATURES</p> -->
       <p>{VEHICLE_DESCRIPTION}</p>
     </div>
   </div>
@@ -420,3 +482,96 @@
   </div>
 </div>
 <!-- // Modal Safety -->
+
+<!-- Modal Gallery -->
+<div id="detail-gallery-modal" class="dt-modal-container">
+  <div class="dt-modal">
+    <div class="dt-modal__wrapper">
+      <button id="dt-gallery-modal-close" class="close-button">
+        Close <i class="ci ci-times-r"></i>
+      </button>
+      <div class="photos-block">
+        <h2>Photos</h2>
+        <!-- Photo Gallery -->
+        <div class="dt-photo-gallery">
+          <ul class="dt-photo-gallery__list">
+            {DETAIL_IMAGES_GRID}
+            <li id="gallery-btn">More Photos</li>
+          </ul>
+        </div>
+        <!-- // Photo Gallery -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- // Modal Safety -->
+
+<!-- Modal Description -->
+<div id="detail-charging-modal" class="dt-modal-container">
+  <div class="dt-modal">
+    <div class="dt-modal__wrapper">
+      <button id="dt-charging-modal-close" class="close-button">
+        Close <i class="ci ci-times-r"></i>
+      </button>
+      <h2>Charging Information</h2>
+      <div class="charging-table">
+        {CHARGER_TIMES_TABLE}
+        <p>*Please Note: Charging and range information is supplied by the manufacturer and may vary
+          depending on conditions.</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- // Modal Description -->
+
+<!-- Script For Image Gallery -->
+<script>
+  window.addEventListener("load", () => {
+    if (document.querySelector('#detail_page')) {
+
+      // variables
+      let arr = Array.from(document.querySelectorAll(".dt-photo-gallery__list li"));
+      let toggleBtn = document.querySelector("#gallery-btn");
+
+      // hide all items after x (change length value to initially show more or less)
+      function hideItems() {
+        for (i = 0; i < arr.length; i++) {
+          if (arr.length < 18) {
+            toggleBtn.classList.add("hidden");
+          }
+
+          if (i > 18 && arr[i].getAttribute("id") !== "gallery-btn") {
+            arr[i].classList.add("hidden");
+          }
+        }
+        let hiddenImageCount = document.querySelectorAll(".dt-photo-gallery__list li.hidden").length;
+        toggleBtn.textContent = `More Photos (${hiddenImageCount})`;
+      }
+
+      function showItems() {
+        // reveal more
+        toggleBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (toggleBtn.textContent.includes('More Photos')) {
+            arr.forEach(function (element) {
+              if (element.classList.contains("hidden")) {
+                element.classList.remove("hidden");
+              }
+            });
+            toggleBtn.textContent = "Less Photos";
+          } else {
+            hideItems();
+          }
+        });
+      }
+
+      if (toggleBtn) {
+        hideItems();
+        showItems();
+      }
+
+    }
+  })
+</script>
+<!-- // Script For Image Gallery -->

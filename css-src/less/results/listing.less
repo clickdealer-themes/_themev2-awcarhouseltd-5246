@@ -1,0 +1,493 @@
+/* ------------------------------------------------------------------------- */
+/*  VEHICLE LISTING
+/* ------------------------------------------------------------------------- */
+
+#search_page {
+  .listing {
+    transform: translateY(100px);
+    opacity: 0;
+    transition: 1.5s ease-in-out all;
+
+    &.visible {
+      transform: translateY(0);
+      opacity: 1;
+      transition: 1.5s ease-in-out all;
+    }
+  }
+}
+
+.listing {
+  position: relative;
+  padding: 0;
+  background: white;
+  color: @text-colour;
+  // border: 1px solid @accent-colour;
+  box-shadow: 0 2px 20px fade(black, 10%);
+  overflow: hidden;
+  border-radius: 10px;
+
+  // &:before {
+  //   content: "";
+  //   position: absolute;
+  //   background: fade(@accent-colour, 30%);
+  // }
+
+  .listing-vehicle-spec {
+    .flex-grow(@grow: 0);
+    .flex-shrink(@shrink: 0);
+    .flex-basis(@width: auto);
+
+    .vehicle-spec {
+      display: flex;
+      flex-wrap: wrap;
+      margin: -2px;
+      margin-top: 0;
+      margin-bottom: 15px;
+      padding: 15px 0;
+      border-top: 1px solid fade(@primary-colour, 10%);
+      border-bottom: 1px solid fade(@primary-colour, 10%);
+
+      li {
+        .flex-grow(@grow: 0);
+        .flex-shrink(@shrink: 0);
+        .flex-basis(@width: calc(~"100% / 3 - 4px"));
+        margin: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &__icon {
+        margin-right: 8px;
+
+        svg, path, g {
+          fill: black;
+          max-width: 24px;
+          max-height: 24px;
+        }
+      }
+      &__stat {
+        font-size: 14px;
+        font-weight: 600;
+        color: @text-colour;
+        display: inline-block;
+      }
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    // flex-wrap: wrap;
+    height: 100%;
+
+    
+  }
+
+  &__image {
+    position: relative;
+
+    a {
+      display: block;
+    }
+
+    img {
+      position: absolute;
+      transition: all 0.2s ease-in-out;
+
+      &.vehicle-img--1 {
+        opacity: 1;
+      }
+      &.vehicle-img--2 {
+        opacity: 0;
+      }
+    }
+  }
+
+  &__info {
+    position: relative;
+    padding: 20px;
+
+    .listing__wrapper {
+      flex-direction: column;
+    }
+  }
+
+  &__header {
+    position: relative;
+    margin-bottom: 5px;
+    overflow: hidden;
+  }
+
+  &__heading {
+    display: block;
+    line-height: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+
+    &--title {
+      color: @text-colour;
+      font-size: 24px;
+      font-weight: 900;
+      text-transform: uppercase;
+      transition: all 0.2s ease-in-out;
+
+      @media @lap {
+        font-size: 18px;
+      }
+    }
+
+    &--subtitle {
+      color: @secondary-colour;
+      font-size: 17px;
+      text-transform: uppercase;
+      transition: all 0.2s ease-in-out;
+
+      @media @tablet {
+        font-size: 12px;
+      }
+    }
+  }
+
+  &__prices {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  &__price {
+    position: relative;
+    padding: 10px 20px;
+    color: @text-colour;
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+
+    @media @lap {
+      padding: 8px 16px;
+    }
+
+    @media @tablet {
+      font-size: 8px;
+    }
+
+    .figure {
+      display: block;
+      color: @text-colour;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    &--total {
+      .figure {
+        font-size: 26px;
+        white-space: nowrap;
+
+        @media @lap {
+          font-size: 20px;
+        }
+      }
+    }
+
+    &--finance {
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 100%;
+        height: 100%;
+        width: 1px;
+        background: @accent-colour;
+      }
+
+      .figure {
+        display: flex;
+        align-items: flex-end;
+        font-size: 26px;
+        white-space: nowrap;
+        
+        a {
+         color: @accent-green;          
+        }
+
+        @media @lap {
+          font-size: 15px;
+        }
+
+        span {
+          margin-left: 2px;
+          font-size: 10px;
+          line-height: 14px;
+
+          @media @lap {
+            font-size: 8px;
+            line-height: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  &__ctas {
+    position: relative;
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+
+    a {
+      flex: 1 1 calc(50% - 10px);
+      margin: 5px;
+    }
+
+    a.btn--main{
+      flex: 100%;
+    }
+
+    .results-btn-view a {
+      .btn !important;
+    }
+
+    .results__cta--engage.engage-premium-enabled
+      .results-btn-view--engage
+      a.button,
+    .results__cta--standard .results-btn-view--engage a.button,
+    .results__cta--standard.engage-premium-enabled
+      .results-btn-view--engage
+      a.button {
+      .btn--engage !important;
+    }
+
+    .results-btn-add,
+    .results-btn-compare {
+      display: none !important;
+    }
+
+    .threecol,
+    .fourcol,
+    .fivecol {
+      width: 100% !important;
+      margin-right: 0 !important;
+    }
+  }
+
+  // Swap image on hover
+  &:hover {
+    .listing__image img.vehicle-img--1 {
+      opacity: 0;
+    }
+    .listing__image img.vehicle-img--2 {
+      opacity: 1;
+    }
+  }
+}
+
+// Grid View Ovverides
+.results-vehicleresults.grid-view {
+  .listing {
+    &:before {
+      top: calc(~"100% - 45px");
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: skewY(5deg);
+    }
+
+    &__wrapper {
+      flex-direction: column;
+    }
+
+    &__image {
+      flex: 0 0 auto;
+      width: 100%;
+
+      // @media @lap {
+      //   flex: 0 0 240px;
+      // }
+
+      // @media @tablet {
+      //   flex: 0 0 300px;
+      // }
+
+      // @media @mobile {
+      //   flex: 0 0 300px;
+      // }
+
+      // img {
+      //   height: 100%;
+      //   width: 100%;
+      //   object-fit: cover;
+      // }
+    }
+
+    &__info {
+      flex: 1 1 auto;
+      width: 100%;
+      margin-top: 0;
+      margin-bottom: auto;
+    }
+
+    &__ctas {
+      a {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// List View Ovverides
+.results-vehicleresults.list-view {
+  .listing {
+    &:before {
+      top: 95%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: skewY(-3deg);
+
+      @media @tablet {
+        top: 90%;
+      }
+    }
+
+    &__image {
+      flex: 0 0 640px;
+      width: 640px;
+      min-height: 350px;
+
+      @media @lap {
+        flex: 0 0 480px;
+        width: 480px;
+        min-height: 280px;
+      }
+
+      @media @tablet {
+        flex: 0 0 320px;
+        width: 320px;
+        min-height: 200px;
+      }
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__info {
+      flex: 1 1 320px;
+      min-width: 0;
+      padding: 40px;
+
+      @media @tablet {
+        padding: 20px;
+      }
+    }
+
+    &__prices {
+      margin: auto 0;
+      justify-content: flex-start;
+    }
+  }
+}
+
+.listing-favourites {
+  top: 40px;
+  right: 40px;
+  transform: none;
+
+  @media @tablet {
+    top: 20px;
+    right: 20px;
+  }
+
+  i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  svg {
+    height: 20px;
+    width: 20px;
+
+    path,
+    polygon,
+    polyline {
+      fill: white;
+    }
+  }
+}
+
+// ENGAGE PREMIUM BUTTONS OVERRIDE
+.results-vehicleresults.grid-view {
+  .results__cta--engage {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -10px;
+    width: 100%;
+
+    .results-btn-view,
+    .results-btn-view--engage {
+      flex: 1 1 100% !important;
+      width: 100% !important;
+      margin: 0 0 10px !important;
+    }
+  }
+}
+
+.results-btn-finance.mobile-half-col {
+  display: none !important;
+}
+
+// Favourites
+.listing-favourites {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  transform: translateY(-50%);
+
+  .list-view & {
+    top: 40px;
+    right: 40px;
+    transform: none;
+
+    @media @tablet {
+      top: 20px;
+      right: 20px;
+    }
+  }
+
+  .app {
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 44px;
+      width: 44px;
+      background: @secondary-colour;
+      color: #cccccc;
+      font-size: 22px;
+      box-shadow: 0 2px 10px fade(black, 50%);
+      border-radius: 99px;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background: lighten(@favourites, 10%);
+        color: white;
+      }
+
+      &.favourites-added {
+        background: @favourites;
+        color: white;
+
+        &:hover {
+          background: lighten(@favourites, 10%);
+          color: white;
+        }
+      }
+    }
+  }
+}

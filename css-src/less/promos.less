@@ -1,405 +1,787 @@
-// Utility Promo Styles
+.hmpgPartners {
+  background: @primary-colour;
 
-.promo-block {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -32px;
-  margin-bottom: -32px;
-
-  &__item {
-    flex: 0 0 calc(~'100% / 3 - 32px');
-    width: calc(~'100% / 3 - 32px');
-    margin-right: 32px;
-    margin-bottom: 32px;
+  h2 {
+    text-align: center;
+    color: white;
+    font-size: 40px;
 
     @media @mobile {
-      flex: 0 0 calc(~'100% - 32px');
-      width: calc(~'100% - 32px');
+      font-size: 30px;
     }
   }
 
-  // Modifiers
-  &--twin {
-    .promo-block__item {
-      flex: 0 0 calc(~'100% / 2 - 32px');
-      width: calc(~'100% / 2 - 32px');
-
-      @media @mobile {
-        flex: 0 0 calc(~'100% - 32px');
-        width: calc(~'100% - 32px');
-      }
-    }
-  }
-}
-
-
-
-
-
-
-// Triple promo
-
-.row-block.promo-triple-horizontal {
-  padding: 100px 0;
-
-  @media @tablet {
-    padding: 50px 0;
-
-    .wrapper {
-      padding: 0 20px !important;
-    }
-  }
-
-  .promo-block {
+  .partners {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    margin-right: -32px;
-    margin-bottom: -32px;
+    gap: 20px;
+    margin-bottom: 10px;
 
-    &.visible {
-      background: transparent !important;
+    .last {
+      margin-right: 0;
+    }
 
-      .promo {
-        opacity: 1;
-        transform: translateY(0);
-        transition: all .5s ease-in-out;
-        transition-delay: 0.6s;
-
-        &__icon {
-          opacity: 1;
-          transform: translateY(0);
-          transition: all .5s ease-in-out;
-          transition-delay: 1.4s;
-        }
-
-        &__text {
-          opacity: 1;
-          transform: translateY(0);
-          transition: all .5s ease-in-out;
-          transition-delay: 1.6s;
-        }
-
-        &__button {
-          opacity: 1;
-          transform: translateY(0);
-          transition: all .5s ease-in-out;
-          transition-delay: 1.8s;
-        }
-      }
+    .fourcol {
+      margin-right: 0;
+      width: fit-content;
+      background: white;
+      padding: 0 10px;
+      border-radius: 10px;
     }
   }
 }
-
-
-.promo {
-  position: relative;
-  display: flex;
-  justify-items: center;
-  align-items: center;
-  height: 420px; // 🤙
-  padding: 30px;
-  opacity: 0;
-  transform: translateY(-100px);
-  transition: all .25s ease-in-out;
-  box-shadow: 5px 10px 50px fade(@primary-colour,5%);
-  box-sizing: border-box;
-
-  @media @tablet {
-    padding: 15px;
-  }
-
-  @media @mobile {
-    height: auto;
-    padding: 30px 15px;
-  }
-
-  &:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    background: fade(@primary-colour, 50%);
-    transition: all .2s linear;
-
-    @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-      -webkit-backdrop-filter: grayscale(0.8);
-      backdrop-filter: grayscale(0.8);
-    }
-  }
-
-  &:hover,
-  &:focus {
-    &:before {
-      @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-        -webkit-backdrop-filter: grayscale(0.2);
-        backdrop-filter: grayscale(0.2);
-      }
-    }
-  }
-
-  &--stock {
-    height: 500px;
-
-    &.visible {
-      background: @primary-colour url("@{dealer-img}/theme/promo__bg--stock{CACHE_BUSTER}.jpg") center center no-repeat !important;
-      background-size: cover !important;
-      transition-delay: 0.9s !important;
-
-      .promo__icon {
-        transition-delay: 1.6s;
-
-        svg {
-          height: 60px;
-          margin-bottom: 20px;
-        }
-      }
-
-      .promo__text {
-        transition-delay: 1.8s;
-      }
-
-      .promo__button {
-        transition-delay: 2s;
-      }
-    }
-  }
-
-  &--finance {
-
-    &.visible {
-      background: @primary-colour url("@{dealer-img}/theme/promo__bg--finance{CACHE_BUSTER}.jpg") center center no-repeat !important;
-      background-size: cover !important;
-    }
-  }
-
-  &--sellcar {
-    &.visible {
-      background: @primary-colour url("@{dealer-img}/theme/promo__bg--sellcar{CACHE_BUSTER}.jpg") center center no-repeat !important;
-      background-size: cover !important;
-      transition-delay: 0.9s !important;
-
-      .promo__icon {
-        transition-delay: 1.6s;
-      }
-
-      .promo__text {
-        transition-delay: 1.8s;
-      }
-
-      .promo__button {
-        transition-delay: 2s;
-      }
-    }
-  }
-
-  &__wrapper {
-    width: 100%;
-  }
-
-  .promo__icon {
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    opacity: 0;
-    transform: translateY(-100px);
-    transition: all .2s ease-in-out;
-    transition-delay: 0.5s;
-
-    svg {
-      height: 80px;
-      width: 100%;
-
-      @media @tablet {
-        height: 50px;
-      }
-
-      path,
-      rect {
-        fill: white;
-      }
-    }
-  }
-
-  .promo__text {
-    display: block;
-    margin: 10px 0;
-    text-align: center;
-    opacity: 0;
-    transform: translateY(-50px);
-    transition: all .25s ease-in-out;
-  }
-
-  .promo-text {
-    position: relative;
-    color: white;
-    font-size: 20px;
-    font-weight: 700;
-
-    &:before {
-      content: "";
-      position: absolute;
-      margin: 0 auto;
-      height: 4px;
-      bottom: -15px;
-      width: 50px;
-      background: @accent-colour;
-      left: 0;
-      right: 0;
-      border-radius: 999px;
-    }
-  }
-
-  .promo-sub-text {
-    color: white;
-    text-align: center;
-    width: 75%;
-    display: block;
-    margin: 25px auto;
-
-    @media @tablet {
-      width: 100%;
-    }
-  }
-
-  .promo__button {
-    display: block;
-    width: 70%;
-    margin: 0 auto;
-    opacity: 0;
-    transform: translateY(-40px);
-    transition: all .25s ease-in-out;
-
-    @media @tablet {
-      width: 100%;
-    }
-
-    a {
-      .btn;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: transparent;
-      color: white !important;
-      border: 2px solid white;
-      white-space: nowrap;
-
-      &:hover,
-      &:focus {
-        background: transparent;
-        color: white !important;
-        border: 2px solid white;
-
-        i {
-          transform: translateX(10px);
-          transition: transform .2s ease-in-out;
-          transition-delay: .5s;
-        }
-      }
-
-      i {
-        margin-left: 10px;
-        transition: transform .2s ease-in-out;
-        transition-delay: 0s;
-      }
-    }
-  }
-}
-
 
 
 
 // Reviews promo
 .row-block.row-block--reviews {
-  .row-block__heading {
-    margin-bottom: 10px;
+
+	&.visible {
+		background: @secondary-colour url('@{dealer-img}/theme/page-hdr__bg{CACHE_BUSTER}.jpg') center center no-repeat !important;
+		background-size: cover !important;
+
+		// @media @mobile {
+		//   background: @secondary-colour url('@{dealer-img}/theme/page-hdr__bg--mobile{CACHE_BUSTER}.jpg') center center no-repeat !important;
+		//   background-size: cover !important;
+		// }
+	}
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: fade(@primary-colour, 60%);
+	}
+
+	.row-block__heading {
+		margin-bottom: 10px;
+		color: white;
+	}
+
+	p.center {
+		margin-bottom: 60px;
+		color: white;
+	}
+
+	.wrapper,
+	.container {
+		overflow: visible;
+	}
+
+	.promo-block {
+		&__item {
+			@media @tablet {
+				flex: 1 1 420px;
+				width: auto;
+			}
+		}
+	}
+
+  // Utility Promo Styles
+
+.promo-block {
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -32px;
+	margin-bottom: -32px;
+
+	&__item {
+		flex: 0 0 calc(~'100% / 3 - 32px');
+		width: calc(~'100% / 3 - 32px');
+		margin-right: 32px;
+		margin-bottom: 32px;
+
+		@media @mobile {
+			flex: 0 0 calc(~'100% - 32px');
+			width: calc(~'100% - 32px');
+		}
+	}
+
+	// Modifiers
+	&--twin {
+		.promo-block__item {
+			flex: 0 0 calc(~'100% / 2 - 32px');
+			width: calc(~'100% / 2 - 32px');
+
+			@media @mobile {
+				flex: 0 0 calc(~'100% - 32px');
+				width: calc(~'100% - 32px');
+			}
+		}
+	}
+}
+
+// Triple Promo Grid
+.row-block.row-block--triple-promo {
+	padding: 0;
+}
+
+.promo-grid {
+	display: flex;
+	flex-wrap: wrap;
+	// display: grid;
+	// grid-template-columns: repeat(2, 1fr);
+	// grid-template-rows: repeat(2, 1fr);
+	// gap: 0px 0px;
+	// grid-auto-flow: row;
+	// grid-template-areas:
+	//   "promo-grid__item--finance promo-grid__item--partex"
+	//   "promo-grid__item--finance promo-grid__item--reserve";
+
+	@media @mobile {
+		display: block;
+	}
+
+	&__item {
+		flex: 0 0 calc(~'100% / 3');
+		position: relative;
+		min-height: 360px;
+		background: @primary-colour;
+
+		@media @mobile {
+			flex: 0 0 100%;
+		}
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			background: fade(@primary-colour, 40%);
+			background: linear-gradient(to top right, fade(@primary-colour, 50%), fade(@primary-colour, 0%));
+		}
+
+		a {
+			display: flex;
+			justify-content: flex-start;
+			align-items: flex-end;
+			height: 100%;
+			width: 100%;
+			padding: 40px;
+
+			@media @tablet {
+				padding: 20px;
+			}
+		}
+	}
+}
+
+}
+
+
+
+.review-quote {
+	padding: 32px;
+	border: 1px solid #e5e5e5;
+	border-radius: 16px;
+	background: white;
+
+	// Modifiers
+	&--autotrader {
+		border-color: #222B5E;
+		box-shadow: 5px 10px 50px fade(#222B5E, 12%);
+	}
+
+	&--google {
+		border-color: #222B5E;
+		box-shadow: 5px 10px 50px fade(#222B5E, 12%);
+
+		.review-quote__platform a svg {
+			height: 24px;
+		}
+	}
+
+	&--cargurus {
+		border-color: #222B5E;
+		box-shadow: 5px 10px 50px fade(#222B5E, 12%);
+	}
+
+	&__author {
+		color: black !important;
+		font-weight: 600;
+	}
+
+	&__quote {
+		margin: 0 0 16px;
+
+		em {
+			display: block;
+			margin-bottom: 16px;
+			color: black;
+			font-size: 20px;
+		}
+
+		p {
+			font-size: 14px;
+			color: black;
+		}
+
+
+		p:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+
+	&__stars {
+		margin-bottom: 16px;
+
+		i {
+			color: #ff9a00;
+		}
+	}
+
+	&__platform {
+		a {
+			display: inline-flex;
+			align-self: center;
+			color: black;
+
+			svg,
+			img {
+				height: 24px;
+				width: auto;
+				margin-left: 5px;
+			}
+		}
+	}
+} 
+
+// General Promo Styles
+.promo-heading {
+  position: relative;
+  display: block;
+  font-size: 44px;
+  font-weight: @heading-weight;
+  line-height: 1.1;
+  text-align: center;
+  text-transform: uppercase;
+  padding-left: 24px;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 8px;
+    background: @accent-colour;
+    transform: skewX(-10deg);
+    border-radius: 1px;
   }
 
-  p.center {
-    margin-bottom: 60px;
+  @media @lap {
+    font-size: 25px;
+  }
+  @media @tablet {
+    font-size: 36px;
+  }
+  @media @mobile {
+    font-size: 30px;
   }
 
+  // span {
+  //   display: block;
+  //   font-weight: 500;
+  // }
+}
+
+// Promos
+.row-block.row-block--promo-section {
+  padding: 0;
+
+  .container {
+    overflow: visible;
+  }
+}
+
+.promo-blocks {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  *,
+  *:before,
+  *:after {
+    transition: all 0.4s ease-in-out;
+  }
+
+  &__item {
+    position: relative;
+    flex: 0 0 calc(~"100% / 3 - 15px");
+    width: calc(~"100% / 3 - 15px");
+    min-height: 420px;
+    max-height: 45vh;
+    padding: 6vw;
+    margin: 5px;
+    border-radius: 10px;
+    background: @secondary-colour;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    @media @tablet {
+      flex: 0 0 calc(~"100% / 1 - 10px");
+      max-width: calc(~"100% / 1 - 10px");
+      min-height: 320px;
+      max-height: 35vh;
+
+      &:before {
+        top: 0;
+        background: fade(#111, 70%);
+        transform: none;
+      }
+
+      .promo-heading {
+        transform: translateY(-10px);
+      }
+
+      .promo-text {
+        opacity: 1;
+        transition-delay: 0.25s;
+      }
+    }
+
+    @media @mobile {
+      flex: 0 0 calc(~"100% / 1");
+      max-width: calc(~"100% / 1");
+      min-height: 320px;
+      padding: 25px;
+    }
+
+    // Background colour for text
+    &:before {
+      content: "";
+      position: absolute;
+      top: calc(~"100% - 60px");
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: fade(@primary-colour, 40%);
+      transform: skewY(-5deg);
+      z-index: 1;
+    }
+
+    // overlay on image
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: fade(#111, 35%);
+    }
+
+    // Hover to show text
+    &:hover {
+      &:before {
+        top: 0;
+        background: fade(#111, 70%);
+        transform: none;
+      }
+
+      .promo-heading {
+        transform: translateY(-10px);
+      }
+
+      .promo-text {
+        opacity: 1;
+        transition-delay: 0.25s;
+      }
+    }
+
+    &--1 {
+      &.visible {
+        background: url("@{dealer-img}/theme/promo-1{CACHE_BUSTER}.jpg") center
+          center no-repeat !important;
+        background-size: cover !important;
+
+        @media @mobile {
+          background: url("@{dealer-img}/theme/promo-1{CACHE_BUSTER}.jpg")
+            center center no-repeat !important;
+          background-size: cover !important;
+        }
+      }
+    }
+    &--2 {
+      &.visible {
+        background: url("@{dealer-img}/theme/promo-2{CACHE_BUSTER}.jpg") center
+          center no-repeat !important;
+        background-size: cover !important;
+
+        @media @mobile {
+          background: url("@{dealer-img}/theme/promo-2{CACHE_BUSTER}.jpg")
+            center center no-repeat !important;
+          background-size: cover !important;
+        }
+      }
+    }
+    &--3 {
+      &.visible {
+        background: url("@{dealer-img}/theme/promo-3{CACHE_BUSTER}.jpg") center
+          center no-repeat !important;
+        background-size: cover !important;
+
+        @media @mobile {
+          background: url("@{dealer-img}/theme/promo-3{CACHE_BUSTER}.jpg")
+            center center no-repeat !important;
+          background-size: cover !important;
+        }
+      }
+    }
+    &--4 {
+      &.visible {
+        background: url("@{dealer-img}/theme/promo-4{CACHE_BUSTER}.jpg") center
+          center no-repeat !important;
+        background-size: cover !important;
+
+        @media @mobile {
+          background: url("@{dealer-img}/theme/promo-4{CACHE_BUSTER}.jpg")
+            center center no-repeat !important;
+          background-size: cover !important;
+        }
+      }
+    }
+    &--5 {
+      &.visible {
+        background: url("@{dealer-img}/theme/promo-5{CACHE_BUSTER}.jpg") center
+          center no-repeat !important;
+        background-size: cover !important;
+
+        @media @mobile {
+          background: url("@{dealer-img}/theme/promo-5{CACHE_BUSTER}.jpg")
+            center center no-repeat !important;
+          background-size: cover !important;
+        }
+      }
+    }
+    &--6 {
+      &.visible {
+        background: url("@{dealer-img}/theme/promo-6{CACHE_BUSTER}.jpg") center
+          center no-repeat !important;
+        background-size: cover !important;
+
+        @media @mobile {
+          background: url("@{dealer-img}/theme/promo-6{CACHE_BUSTER}.jpg")
+            center center no-repeat !important;
+          background-size: cover !important;
+        }
+      }
+    }
+  }
+
+  .promo-heading {
+    display: block;
+    margin-bottom: 16px;
+    color: white;
+    text-align: left;
+    z-index: 2;
+    max-width: 400px;
+
+    @media @lap {
+    }
+    @media @tablet {
+      margin-bottom: 50px;
+    }
+  }
+
+  .promo-text {
+    position: relative;
+    opacity: 0;
+    transition-delay: 0s;
+    z-index: 2;
+
+    p {
+      color: white;
+      font-size: 20px;
+
+      @media @tablet {
+        font-size: 16px;
+      }
+    }
+  }
+
+
+  
+}
+
+// Online buying
+.row-block.row-block--promo-online {
   .wrapper,
   .container {
     overflow: visible;
   }
+}
 
-  .promo-block {
-    &__item {
+.online-buying-list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+  padding: 40px 0 40px 350px;
+  margin: 0 auto;
+  margin-bottom: -40px;
+  background: transparent !important;
+
+  @media @mobile {
+    padding: 240px 0 0;
+  }
+
+  &--details {
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 50px 0 0;
+    margin-right: -40px;
+    margin-bottom: -40px;
+    max-width: 100%;
+
+    @media @mobile {
+      margin: 0px auto;
+      padding: 50px 0px;
+    }
+
+    &:before {
+      content: none;
+    }
+
+    .online-buying-list__item {
+      flex: 0 0 calc(~"100% / 4 - 40px");
+      width: calc(~"100% / 4 - 40px");
+      flex-direction: column;
+      margin-left: unset !important;
+      margin-right: 40px !important;
+      margin-bottom: 40px !important;
+
+      @media @lap {
+        flex: 0 0 calc(~"100% / 2 - 40px");
+        width: calc(~"100% / 2 - 40px");
+      }
+
+      @media @mobile {
+        flex: 0 0 calc(~"100% - 40px");
+        width: calc(~"100% - 40px");
+        margin: 30px auto !important;
+      }
+    }
+
+    .online-buying-list__icon {
+      transform: translateY(-40px) rotate(15deg);
+    }
+
+    .online-buying-list__message {
+      margin-top: -20px;
+      margin-left: 0;
+      text-align: center;
+
+      a {
+        &:hover {
+          color: @accent-colour !important;
+        }
+      }
+
+      em {
+        font-size: 16px;
+      }
+    }
+  }
+
+  // Image
+  &:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 600px;
+    width: 804px;
+    transform: translateY(-50%) translateX(-30%);
+
+    @media @lap {
+      height: 400px;
+      width: 600px;
+    }
+
+    @media @tablet {
+      width: 400px;
+      height: 300px;
+    }
+
+    @media @mobile {
+      top: 0;
+      left: auto;
+      right: auto;
+      width: calc(~"100% + 20px");
+      height: 260px;
+      margin-left: -10px;
+      margin-right: -10px;
+      transform: none;
+    }
+  }
+
+  &.visible:before {
+    background: url("@{dealer-img}/theme/promo__img--online-buying{CACHE_BUSTER}.png")
+      right center no-repeat !important;
+    background-size: 100% auto !important;
+
+    @media @mobile {
+      background-size: auto 100% !important;
+      background-position: center left !important;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 640px;
+    padding: 20px;
+    margin-bottom: 40px;
+    background: #f5f5f5;
+    color: @text-colour;
+    border: 1px solid #c5c5c5;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px fade(black, 10%);
+    z-index: 1;
+
+    @media @lap {
+      max-width: 500px;
+    }
+
+    @media @mobile {
+      max-width: 100%;
+      flex-direction: column;
+      margin: 0 auto 40px !important;
+    }
+
+    &:nth-child(1) {
+      margin-left: auto;
+      margin-right: 40px;
+    }
+
+    &:nth-child(2) {
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    &:nth-child(3) {
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    &:nth-child(4) {
+      margin-right: 40px;
+      margin-left: auto;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 60px;
+    width: 60px;
+    height: 60px;
+    background: @accent-colour;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px fade(black, 15%);
+    transform: translate(-50px) rotate(15deg);
+
+    @media @mobile {
+      transform: translate(0, -40px) rotate(15deg);
+    }
+
+    i {
+      color: @primary-colour;
+      font-size: 36px;
+      transform: rotate(-15deg);
+
+      @media @lap {
+        font-size: 40px;
+      }
+
       @media @tablet {
-        flex: 1 1 420px;
-        width: auto;
+        font-size: 32px;
+      }
+
+      @media @mobile {
+        font-size: 26px;
+      }
+    }
+  }
+
+  &__message {
+    position: relative;
+    margin-left: -20px;
+
+    @media @mobile {
+      margin-top: -20px;
+      margin-left: 0px;
+      text-align: center;
+    }
+
+    em {
+      display: block;
+      // margin-bottom: 8px;
+      color: @heading-colour;
+      font-size: 22px;
+      font-weight: 600;
+
+      span {
+        display: block;
+        font-size: 12px;
+        font-weight: normal;
+      }
+    }
+
+    p {
+      margin-bottom: 0;
+      font-size: 18px;
+
+      @media @lap {
+        font-size: 16px;
       }
     }
   }
 }
 
-.review-quote {
-  padding: 32px;
-  border: 1px solid #e5e5e5;
-  border-radius: 16px;
+.budget-search {
+  text-align: center;
 
-  // Modifiers
-  &--autotrader {
-    border-color: #222B5E;
-    box-shadow: 5px 10px 50px fade(#222B5E,12%);
-  }
+  &__main-title {
+    display: block;
+    margin-bottom: 0;
+    color: @primary-colour;
+    font-size: 54px;
+    font-weight: 300;
+    line-height: 1;
 
-  &--google {
-    border-color: #ea4335;
-    box-shadow: 5px 10px 50px fade(#ea4335,12%);
+    @media @tablet {
+      font-size: 42px;
+    }
 
-    .review-quote__platform a svg {
-      height: 24px;
+    @media @mobile {
+      font-size: 34px;
     }
   }
 
-  &--cargurus {
-    border-color: #00a0dd;
-    box-shadow: 5px 10px 50px fade(#00a0dd,12%);
-  }
+  &__sub-title {
+    display: block;
+    color: @accent-colour;
+    font-size: 26px;
 
-  &__quote {
-    margin: 0 0 16px;
-
-    em {
-      display: block;
-      margin-bottom: 16px;
-      color: @heading-colour;
-      font-size: 20px;
+    @media @tablet {
+      font-size: 22px;
     }
 
-    p {
-      font-size: 14px;
-    }
-
-    p:last-of-type {
-      margin-bottom: 0;
+    @media @mobile {
+      font-size: 18px;
     }
   }
 
-  &__stars {
-    margin-bottom: 16px;
-
-    i {
-      color: #ff9a00;
-    }
-  }
-
-  &__platform {
-    a {
-      display: inline-flex;
-      align-self: center;
-      color: @text-colour;
-
-      svg {
-        height: 18px;
-        width: auto;
-        margin-left: 5px;
-      }
-    }
-  }
+ 
 }

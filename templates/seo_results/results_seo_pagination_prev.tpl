@@ -1,1 +1,1 @@
-<li class="pagenavi__prev"><a {RESULTS_PAGE_NO_FOLLOW_LINK} href="{RESULTS_PAGINATION_PREV_SLUG}" class="previous" title="First Page of Results"><i class="far fa-chevron-left"></i> First<span class="tablet-hidden"> Page</span></a></li>
+<li class="pagenavi__prev"><a {RESULTS_PAGE_NO_FOLLOW_LINK} href="{RESULTS_PAGINATION_PREV_SLUG}" class="previous" title="First Page of Results"><i class='ci ci-chevron-double-left-r'></i></a></li>

@@ -69,6 +69,29 @@
       width: calc(~'100% - 40px');
       .flex-basis(@width: calc(~'100% - 40px'));
     }
+
+    .detailContact{
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 30px;
+
+      @media @mobile {
+        flex-direction: column;
+      }
+
+      li{
+        margin-right: 20px;
+      }
+
+      a{
+        color: @text-colour;
+
+        &:hover{
+          color: @accent-colour;
+        }
+      }
+    }
   }
 
   .dt-vehicle-location {
@@ -204,7 +227,7 @@
       margin: 10px;
       padding: 25px 10px;
       border-radius: 20px;
-      border: 1px solid #555;
+      border: 1px solid fade(black,10%);
       // inner flex
       display: flex;
       flex-direction: column;
@@ -213,6 +236,11 @@
 
       @media @mobile {
         margin: 5px;
+      }
+
+      &--finance:hover{
+        background: @secondary-colour;
+        border-color: @secondary-colour;
       }
     }
 
@@ -287,15 +315,24 @@
     .flex-grow(@grow: 0);
     .flex-shrink(@shrink: 0);
     .flex-basis(@width: auto);
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     // inner flex
-    // .flex-display();
+    .flex-display();
+    flex-direction: column;
+
+    @media @lap {
+      margin-bottom: 20px;
+    }
 
     &__button {
       .flex-grow(@grow: 1);
       .flex-shrink(@shrink: 1);
       .flex-basis(@width: auto);
       margin-bottom: 10px;
+
+      &:last-child{
+        margin-bottom: 0;
+      }
 
       a {
         width: 100%;
@@ -536,6 +573,7 @@
 
   .spec-list-block {
     grid-area: spec-list-block;
+    flex-direction: column;
   }
 
   .ksp-block {
@@ -809,6 +847,8 @@
     }
   }
 
+}
+
 
   // photo gallery
   .dt-photo-gallery {
@@ -819,11 +859,11 @@
       margin: -5px;
 
       li {
-        flex: 0 0 calc(~'100% / 10 - 10px');
+        flex: 0 0 calc(~'100% / 6 - 10px');
         margin: 5px;
 
         @media @tablet {
-          flex: 0 0 calc(~'100% / 6 - 10px');
+          flex: 0 0 calc(~'100% / 4 - 10px');
         }
 
         @media @mobile {
@@ -862,8 +902,6 @@
       }
     }
   }
-}
-
 
 
 
@@ -945,13 +983,12 @@
       flex: 0 0 auto;
       margin: 4px;
       padding: 6px 10px;
-      background: darken(@body-colour,5%);
+      background: lightgray;
       color: @text-colour;
       font-size: 11px;
       line-height: 1;
-      font-weight: bold;
-      border-radius: 8px;
-      border: 1px solid #d2d2d2;
+      font-weight: 400;
+      border-radius: 99px;
 
       @media @tablet {
         padding: 6px 10px;
@@ -1138,7 +1175,7 @@ details p {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999999;
+  z-index: 9999;
   display: none;
   transition: all 1s linear;
 
@@ -1182,6 +1219,7 @@ details p {
       height: 100%;
       padding: 60px 60px 100px 60px;
       overflow-y: auto;
+      overflow-x: hidden;
       border-radius: 8px;
 
       @media @tablet {
@@ -1248,102 +1286,61 @@ details p {
   }
 }
 
+// Electric vehicle data show / hide
+.is-electric {
+  .type {
+    &__electric {
+      display: flex !important;
+    }
 
-.dt-cta-block{
-  background: #f2f2f2;
-  border: 1px solid #d2d2d2;
-  padding: 30px;
-  border-radius: 8px;
+    &__car {
+      display: none !important;
+    }
+  }
 
-  .btn--finance{
-    display: inline-block;
-    margin: 0;
-    padding: 8px 15px;
-    font-family: "Nunito Sans",sans-serif;
-    font-size: 12px;
-    line-height: 20px;
-    font-weight: 700;
-    text-align: center;
-    text-shadow: none;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: 0;
-    border-radius: 8px;
-    box-sizing: border-box;
-    transition: .2s all linear;
-    background: #63b963!important;
-    color: #fff!important;
-    width: 100%;
-    padding: 14px 26px;
-    font-size: 18px;
+  .spec-button {
+    &.type {
+      &__electric {
+        display: flex !important;
+      }
 
-    &:hover{
-      background: darken(#63b963,20%)!important;
+      &__car {
+        display: none !important;
+      }
+    }
+  }
+
+  #detail-similar-carousel {
+    .type__electric {
+      display: none !important;
+    }
+
+    .type__car {
+      display: flex !important;
+    }
+
+    .touchcarousel-item.is-electric {
+      .type__electric {
+        display: flex !important;
+      }
+
+      .type__car {
+        display: none !important;
+      }
     }
   }
 }
 
+.type {
+  &__electric {
+    display: none !important;
+  }
+}
+
+// END Electric Funtionality
 
 
 
 
 
-// // Location identifiers 
 
-// #detail {
-
-//   .listing__location {
-//     position: relative;
-//     top: initial;
-//     right: initial;
-//     margin-bottom: 20px;
-//   }
-
-//   &.veh-loc-1 {
-
-//     .dt-header-container .vehicle-main-cta__button a,
-//     .more-info-block .panel a {
-//       background: @loc-1  !important;
-
-//       &:hover {
-//         background: @loc-1-hover  !important;
-//       }
-//     }
-
-//     .dt-header-container .vehicle-cta ul li a,
-//     .dt-header-container .vehicle-cta ul li button {
-//       color: @loc-1  !important;
-//       border-color: @loc-1  !important;
-
-//       &:hover {
-//         background: @loc-1-hover  !important;
-//         color: white !important;
-//         border-color: @loc-1-hover  !important;
-//       }
-//     }
-//   }
-
-//   &.veh-loc-2 {
-
-//     .dt-header-container .vehicle-main-cta__button a,
-//     .more-info-block .panel a {
-//       background: @loc-2  !important;
-
-//       &:hover {
-//         background: @loc-2-hover  !important;
-//       }
-//     }
-
-//     .dt-header-container .vehicle-cta ul li a,
-//     .dt-header-container .vehicle-cta ul li button {
-//       color: @loc-2  !important;
-//       border-color: @loc-2  !important;
-
-//       &:hover {
-//         background: @loc-2-hover  !important;
-//         color: white !important;
-//         border-color: @loc-2-hover  !important;
-//       }
-//     }
-//   }
-// }
